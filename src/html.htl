@@ -14,7 +14,9 @@
         <div class="title">
             <h1>
                 <span class="menu-icon"></span>
-                <img src="./static/helix_logo.png" />Helix Documentation</h1>
+                <img src="./static/helix_logo.png" />
+                Documentation
+            </h1>
         </div>
         <div class="search">
             <input type="text" value="" placeholder="Search" class="searchinput">

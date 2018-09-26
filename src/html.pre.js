@@ -115,8 +115,9 @@ function extractLastModifiedFromCommitsHistory(commits, logger) {
  * @param {Object} logger Logger
  */
 async function computeNavPath(apiRoot, owner, repo, ref, path, logger) {
-  logger.debug('html-pre.js - Fectching the nav');
+  logger.debug('html-pre.js - Fetching the nav');
 
+  /*
   // fetch the whole tree...
   const options = {
     uri: `${apiRoot}` +
@@ -150,6 +151,9 @@ async function computeNavPath(apiRoot, owner, repo, ref, path, logger) {
   }
 
   summaryPath = summaryPath ? summaryPath.replace('.md', '') : '';
+  */
+  const summaryPath = '/SUMMARY';
+ 
   logger.debug(`html-pre.js - Found SUMMARY.md to generate nav: ${summaryPath}`);
   return summaryPath;
 }

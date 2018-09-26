@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 .hlx/cache
 .hlx/build
+=======
+.hlx/
+>>>>>>> b3df5cd... Initial commit.
 .cache/
 node_modules/
 pipeline.log
 logs
+<<<<<<< HEAD
 env.inf
+=======
+>>>>>>> b3df5cd... Initial commit.

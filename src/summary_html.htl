@@ -1,0 +1,1 @@
+<div data-sly-test="${payload.content.children}" data-sly-list="${payload.content.children}">${item}</div>

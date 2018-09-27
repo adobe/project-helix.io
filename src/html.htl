@@ -74,12 +74,7 @@
 
             document.querySelectorAll('ul li a').forEach(function (elem) {
                 if (elem.href == window.location.href) {
-                    let ul = elem.parentElement.parentElement;
-                    const sibling = ul.querySelector('ul');
-                    if (sibling) {
-                        ul = sibling;
-                    }
-                    ul.classList.add('opened');
+                    elem.parentElement.parentElement.classList.add('opened');
                 }
 
                 elem.parentElement.addEventListener('click', function (ev) {

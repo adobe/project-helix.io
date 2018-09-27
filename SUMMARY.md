@@ -15,10 +15,6 @@
 # Table of content
 
 * [Overview](index.md)
-  * [Architecture overview](doc/general/architecture.md)
-  * [Services you need](doc/general/services.md)
-  * [Contributing](doc/general/contributing.md)
 * Getting Started with Helix
   * [Build your site](doc/getting-started/develop.md)
   * [Deploy your code](doc/getting-started/deploy.md)
-* [Helix repositories](https://github.com/search?p=1&q=topic%3Ahelix+org%3Aadobe&type=Repositories)

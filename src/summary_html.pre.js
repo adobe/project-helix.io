@@ -22,7 +22,9 @@ function filterNav(navChildren, path, logger) {
             nav = nav.slice(1);
         }
         nav = nav.map(element => element
-            .replace(new RegExp('href="', 'g'), `href="${currentFolderPath}/`)
+            // prefix with currentFolderPath from links not starting with http:// or https://
+            .replace(new RegExp('href="((?!http.*://))', 'g'), `href="${currentFolderPath}/`)
+            // replace md extension by .html
             .replace(new RegExp('.md"', 'g'), '.html"'));
 
         logger.debug('html-pre.js - Managed to collect some content for the nav');

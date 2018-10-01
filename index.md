@@ -15,3 +15,7 @@
 # Project Helix
 
 Welcome to Project Helix!
+
+## Build your website
+
+Helix enables developers to create a fully custom site and to manage its content. [Get started](doc/getting-started/start-developing-your-first-helix-project-in-60-seconds.md)

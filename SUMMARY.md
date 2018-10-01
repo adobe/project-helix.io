@@ -15,11 +15,9 @@
 # Table of content
 
 * [Overview](index.md)
-  * [Architecture overview](doc/general/architecture.md)
+* [Getting Started with Helix in 60 seconds](doc/getting-started/start-developing-your-first-helix-project-in-60-seconds.md)
+* Platform docs
   * [Understand the pipeline](hypermedia-pipeline/README.md)
   * [The Helix command line](helix-cli/README.md)
   * [Contributing](doc/general/contributing.md)
-* Getting Started with Helix
-  * [Build your site](doc/getting-started/develop.md)
-  * [Deploy your code](doc/getting-started/deploy.md)
 * [Helix repositories](https://github.com/search?p=1&q=topic%3Ahelix+org%3Aadobe&type=Repositories)

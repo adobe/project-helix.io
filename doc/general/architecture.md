@@ -32,8 +32,6 @@ Fastly performs a number of key jobs for every request:
 3. Processing of Edge-side includes
 4. Efficient caching
 
-The code for Fastly can be found in the directory `/ptototypes/fastly` of this project.
-
 #### Request Routing based on Strain Configuration
 
 At the most basic level, a strain is a combination of content (specified as a git URL) and deployed code (specified as an OpenWhisk action name and namespace). As a given site may have multiple strains at the same time, the first job for every request is to identify the correct strain.

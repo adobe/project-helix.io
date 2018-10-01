@@ -27,11 +27,10 @@ function removeFirstTitle(children, logger) {
 }
 
 function fixTheLinks(children, logger) {
-  logger.debug('html-pre.js - Removing first title');
+  logger.debug('html-pre.js - Fixing the links (md to html)');
   let ret = children;
   if (ret && ret.length > 0) {
     ret = ret.map(element => element
-      .replace(new RegExp('href="', 'g'), 'href="/')
       .replace(new RegExp('.md"', 'g'), '.html"'));
   }
   return ret;

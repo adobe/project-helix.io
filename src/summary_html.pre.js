@@ -10,7 +10,15 @@
  * governing permissions and limitations under the License.
  */
 
-function filterNav(navChildren, path, logger) {
+const SUBDOMAINS = [{
+    'name': 'hypermedia-pipeline',
+    'url': 'https://pipeline.project-helix.io'
+},{
+    'name': 'helix-cli',
+    'url': 'https://client.project-helix.io'
+}];
+
+function filterNav(navChildren, path, isDev, logger) {
     logger.debug('html-pre.js - Extracting nav');
 
     if (navChildren && navChildren.length > 0) {
@@ -21,12 +29,23 @@ function filterNav(navChildren, path, logger) {
         if (nav && nav.length > 0) {
             nav = nav.slice(1);
         }
+
+        SUBDOMAINS.forEach(domain => {
+            nav = nav.map(element => {
+                if (!isDev) {
+                    return element.replace(new RegExp(domain.name, 'g'), domain.url);
+                } else {
+                    return element.replace(new RegExp(domain.name, 'g'), `subdomains/${domain.name}`);
+                }
+            });
+        });
+
         nav = nav.map(element => element
             // prefix with currentFolderPath from links not starting with http:// or https://
             .replace(new RegExp('href="((?!http.*://))', 'g'), `href="${currentFolderPath}/`)
             // replace md extension by .html
             .replace(new RegExp('.md"', 'g'), '.html"'));
-
+            
         logger.debug('html-pre.js - Managed to collect some content for the nav');
         return nav;
     }
@@ -51,8 +70,11 @@ async function pre(payload, action) {
 
         const p = payload;
 
+        // TODO find a better way or implement one
+        isDev = action.request.headers.host ? action.request.headers.host.indexOf('localhost') != -1 : false;
+
         // clean up the resource
-        p.content.children = filterNav(p.content.children, action.request.params.path, logger);
+        p.content.children = filterNav(p.content.children, action.request.params.path, isDev, logger);
 
         return p;
     } catch (e) {

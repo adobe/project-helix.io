@@ -16,7 +16,8 @@
 
 * [Overview](index.md)
   * [Architecture overview](doc/general/architecture.md)
-  * [Services you need](doc/general/services.md)
+  * [Understand the pipeline](hypermedia-pipeline/README.md)
+  * [The Helix command line](helix-cli/README.md)
   * [Contributing](doc/general/contributing.md)
 * Getting Started with Helix
   * [Build your site](doc/getting-started/develop.md)

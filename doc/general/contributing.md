@@ -2,11 +2,6 @@
 
 Thank you for your interest in contributing to Project Helix. As an Open Development project, Project Helix is not just open to contributions, but we actively encourage and seek contributions from across Adobe. **We are thrilled to have you on board.**
 
-## Understanding Project Helix
-
-1. Get an overview of the architecture from [architecture.md](architecture.md)
-2. Also check out [services.md](Sservices.md) for a list of external services we are using
-
 ## Where to contribute in Project Helix
 
 A lot of the code of Project Helix and many of the most exciting areas for contributions are already Open Source, so some of the more interesting areas for contributions are:

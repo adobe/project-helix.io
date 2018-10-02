@@ -14,10 +14,12 @@
 
 # Table of content
 
-* [Overview](index.md)
-* [Getting Started with Helix in 60 seconds](doc/getting-started/start-developing-your-first-helix-project-in-60-seconds.md)
-* Platform docs
-  * [Understand the pipeline](hypermedia-pipeline/README.md)
-  * [The Helix command line](helix-cli/README.md)
-  * [Contributing](doc/general/contributing.md)
-* [Helix repositories](https://github.com/search?p=1&q=topic%3Ahelix+org%3Aadobe&type=Repositories)
+* [Home](index.md)
+* Platform Docs
+  * [Where is the content ?](doc/getting-started/content.md)
+  * [Debug the `pre.js`](doc/getting-started/debug.md)
+  * [The `hlx` command line](helix-cli/README.md)
+  * [Anatomy the Pipeline](hypermedia-pipeline/README.md)
+  * [How to contribute](doc/general/contributing.md)
+* API Reference (coming soon)
+* [Helix Repositories](https://github.com/search?p=1&q=topic%3Ahelix+org%3Aadobe&type=Repositories)

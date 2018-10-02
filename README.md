@@ -8,4 +8,4 @@ Check [www.project-helix.io](http://www.project-helix.io/index.html)... coming s
 
 Clone current repo and simply run `hlx up`.
 
-If you want to see content from remote repository, run `git submodule init`.
+If you want to see content from remote repository, run `git submodule init`

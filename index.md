@@ -12,10 +12,39 @@
 */
 -->
 
-# Project Helix
+# Welcome to Project Helix
 
-Welcome to Project Helix!
+Helix is the new experience management service to create, manage, and deliver great digital experiences.
 
-## Build your website
+Better than a long story, just try it!
 
-Helix enables developers to create a fully custom site and to manage its content. [Get started](doc/getting-started/start-developing-your-first-helix-project-in-60-seconds.md)
+## Pre-Requisites
+
+1. [Git](https://git-scm.com/) should be [installed](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [setup](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup) on your machine.
+
+## Run your first website in 60 Seconds
+
+1. Download and install `hlx`, the [Helix command line tool](https://github.com/adobe/helix-cli).
+
+```bash
+# we'll provide a more concise download url soon...
+curl -OL https://github.com/adobe/helix-cli/releases/download/v0.7.9/hlx_install.sh
+chmod +x hlx_install.sh
+./hlx_install.sh
+```
+
+2. Create your first Helix project.
+
+```bash
+# your new project will be called 'hello_helix'
+hlx demo hello_helix
+```
+
+3. Launch the Helix local development environment
+
+```bash
+cd hello_helix
+hlx up
+```
+
+A browser window opens, your first site is running!

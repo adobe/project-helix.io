@@ -1,0 +1,6 @@
+[submodule "subdomains/hypermedia-pipeline"]
+	path = subdomains/hypermedia-pipeline
+	url = https://github.com/adobe/hypermedia-pipeline
+[submodule "subdomains/helix-cli"]
+	path = subdomains/helix-cli
+	url = https://github.com/adobe/helix-cli

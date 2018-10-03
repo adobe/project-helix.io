@@ -1,0 +1,17 @@
+- strain:
+    name: default
+    code: /acapt/default/https---github-com-adobe-project-helix-io-git--master--
+    url: www.project-helix.io
+    content:
+      repo: project-helix.io
+      ref: master
+      owner: adobe
+    static:
+      root: /dist
+- strain:
+    name: 512c8a2675903869
+    code: /acapt/default/https---github-com-adobe-project-helix-io-git--master--
+    content:
+      repo: project-helix.io
+      ref: master
+      owner: adobe

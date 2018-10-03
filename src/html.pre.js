@@ -174,12 +174,15 @@ async function computeNavPath(isDev, logger) {
 
   summaryPath = summaryPath ? summaryPath.replace('.md', '') : '';
   */
-  let summaryPath = '/SUMMARY';
+  
   if (!isDev) {
-     summaryPath = 'https://www.project-helix.io/SUMMARY';
+    const summaryPath = 'https://www.project-helix.io/SUMMARY';
+    logger.debug(`html-pre.js - Production path to SUMMARY.md to generate nav: ${summaryPath}`);
+    return summaryPath;
   }
  
-  logger.debug(`html-pre.js - Found SUMMARY.md to generate nav: ${summaryPath}`);
+  const summaryPath = '/SUMMARY';
+  logger.debug(`html-pre.js - Development path to SUMMARY.md to generate nav: ${summaryPath}`);
   return summaryPath;
 }
 

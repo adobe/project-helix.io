@@ -46,7 +46,7 @@ function filterNav(navChildren, path, isDev, logger) {
             // replace md extension by .html
             .replace(new RegExp('.md"', 'g'), '.html"'));
             
-        logger.debug('html-pre.js - Managed to collect some content for the nav');
+        logger.debug(`html-pre.js - Managed to collect some content for the nav: ${nav.length}`);
         return nav;
     }
 

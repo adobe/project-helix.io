@@ -136,7 +136,7 @@ function extractLastModifiedFromCommitsHistory(commits, logger) {
  * @param String ref Ref
  * @param {Object} logger Logger
  */
-async function computeNavPath(apiRoot, owner, repo, ref, path, logger) {
+async function computeNavPath(isDev, logger) {
   logger.debug('html-pre.js - Fetching the nav');
 
   /*
@@ -175,6 +175,9 @@ async function computeNavPath(apiRoot, owner, repo, ref, path, logger) {
   summaryPath = summaryPath ? summaryPath.replace('.md', '') : '';
   */
   const summaryPath = '/SUMMARY';
+  if (!isDev) {
+     summaryPath = 'https://www.project-helix.io/SUMMARY';
+  }
  
   logger.debug(`html-pre.js - Found SUMMARY.md to generate nav: ${summaryPath}`);
   return summaryPath;
@@ -221,13 +224,12 @@ async function pre(payload, action) {
 
     // fetch and inject the nav
     if (secrets.REPO_RAW_ROOT) {
+      // TODO find a better way or implement one
+      const isDev = action.request.headers.host ? action.request.headers.host.indexOf('localhost') != -1 : false;
+
       p.content.nav =
         await computeNavPath(
-          secrets.REPO_API_ROOT,
-          actionReq.params.owner,
-          actionReq.params.repo,
-          actionReq.params.ref,
-          actionReq.params.path,
+          isDev,
           logger,
         );
     } else {

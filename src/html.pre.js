@@ -174,7 +174,7 @@ async function computeNavPath(isDev, logger) {
 
   summaryPath = summaryPath ? summaryPath.replace('.md', '') : '';
   */
-  const summaryPath = '/SUMMARY';
+  let summaryPath = '/SUMMARY';
   if (!isDev) {
      summaryPath = 'https://www.project-helix.io/SUMMARY';
   }

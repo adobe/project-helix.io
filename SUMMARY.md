@@ -14,7 +14,7 @@
 
 # Table of content
 
-* [Home](index.md)
+* [Home](project-helix.io/index.md)
 * Platform Docs
   * [Where is the content ?](project-helix.io/doc/getting-started/content.md)
   * [Debug the `pre.js`](project-helix.io/doc/getting-started/debug.md)

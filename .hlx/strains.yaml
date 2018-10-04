@@ -1,7 +1,7 @@
 - strain:
     name: default
     code: /acapt/default/https---github-com-adobe-project-helix-io-git--master--
-    url: www.project-helix.io
+    condition: req.http.host == "www.project-helix.io"
     content:
       repo: project-helix.io
       ref: master
@@ -9,9 +9,22 @@
     static:
       root: /dist
 - strain:
-    name: 512c8a2675903869
+    name: pipeline
     code: /acapt/default/https---github-com-adobe-project-helix-io-git--master--
+    condition: req.http.host == "pipeline.project-helix.io"
     content:
-      repo: project-helix.io
+      repo: hypermedia-pipeline
       ref: master
       owner: adobe
+    static:
+      root: /dist
+- strain:
+    name: client
+    code: /acapt/default/https---github-com-adobe-project-helix-io-git--master--
+    condition: req.http.host == "client.project-helix.io"
+    content:
+      repo: helix-cli
+      ref: master
+      owner: adobe
+    static:
+      root: /dist

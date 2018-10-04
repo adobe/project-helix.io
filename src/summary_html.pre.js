@@ -10,12 +10,18 @@
  * governing permissions and limitations under the License.
  */
 
-const SUBDOMAINS = [{
+const DOMAINS = [{
+    'name': 'project-helix.io/',
+    'dev': '',
+    'prod': 'https://www.project-helix.io/'
+},{
     'name': 'hypermedia-pipeline',
-    'url': 'https://pipeline.project-helix.io'
+    'dev': 'subdomains/hypermedia-pipeline',
+    'prod': 'https://pipeline.project-helix.io'
 },{
     'name': 'helix-cli',
-    'url': 'https://client.project-helix.io'
+    'dev': 'subdomains/helix-cli',
+    'prod': 'https://client.project-helix.io'
 }];
 
 function filterNav(navChildren, path, isDev, logger) {
@@ -30,13 +36,9 @@ function filterNav(navChildren, path, isDev, logger) {
             nav = nav.slice(1);
         }
 
-        SUBDOMAINS.forEach(domain => {
+        DOMAINS.forEach(domain => {
             nav = nav.map(element => {
-                if (!isDev) {
-                    return element.replace(new RegExp(domain.name, 'g'), domain.url);
-                } else {
-                    return element.replace(new RegExp(domain.name, 'g'), `subdomains/${domain.name}`);
-                }
+                return element.replace(new RegExp(domain.name, 'g'), isDev ? domain.dev : domain.prod);
             });
         });
 
@@ -58,6 +60,7 @@ function filterNav(navChildren, path, isDev, logger) {
 // that returns a function (with payload, config, logger as arguments)
 // that calls next (after modifying the payload a bit)
 async function pre(payload, action) {
+    console.log(`SUMMARY Requested path: ${action.request.params.path}`);
     const {
         logger
     } = action;

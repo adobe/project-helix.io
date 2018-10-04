@@ -16,7 +16,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-    <link rel="icon" href="./static/favicon.ico">
+    <link rel="icon" href="./static/favicon.ico" />
     <link rel="stylesheet" href="./static/styles.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" />
     <script src="https://momentjs.com/downloads/moment.min.js"></script>
@@ -38,6 +38,7 @@
     </div>
     <div class="main">
         <div class="nav">
+            <!-- include ${content.nav}.summary.html-->
             <esi:include src="${content.nav}.summary.html" />
         </div>
         <div class="content">

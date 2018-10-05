@@ -20,20 +20,20 @@ Better than a long story, just try it!
 
 ## Pre-Requisites
 
-1. [Git](https://git-scm.com/) should be [installed](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [setup](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup) on your machine.
+[Git](https://git-scm.com/) should be [installed](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [setup](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup) on your machine.
 
-## Run your first website in 60 Seconds
+## Start developing with Helix in 60 Seconds
 
-1. Download and install `hlx`, the [Helix command line tool](https://github.com/adobe/helix-cli).
+1. Download and install `hlx`, the [Helix command line tool](https://github.com/adobe/helix-cli)
 
 ```bash
-# we'll provide a more concise download url soon...
+# we'll provide a shorter and stable download url soon...
 curl -OL https://github.com/adobe/helix-cli/releases/download/v0.7.9/hlx_install.sh
 chmod +x hlx_install.sh
 ./hlx_install.sh
 ```
 
-2. Create your first Helix project.
+2. Create your first Helix project
 
 ```bash
 # your new project will be called 'hello_helix'

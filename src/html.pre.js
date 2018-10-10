@@ -196,8 +196,6 @@ async function pre(payload, action) {
     request: actionReq
   } = action;
 
-  logger.debug(`html-pre.js - Current Fastly version - ${actionReq.headers['X-Version']}`);
-
   try {
     if (!payload.content) {
       logger.debug('html-pre.js - Payload has no resource, nothing we can do');

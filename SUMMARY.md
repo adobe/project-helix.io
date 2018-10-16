@@ -18,7 +18,7 @@
 * Platform Docs
   * [Where is the content ?](project-helix.io/doc/getting-started/content.md)
   * [The `hlx` command line](helix-cli/README.md)
-  * [Anatomy the Pipeline](hypermedia-pipeline/README.md)
+  * [Anatomy of the Pipeline](hypermedia-pipeline/README.md)
   * [How to contribute](project-helix.io/doc/general/contributing.md)
 * API Reference (coming soon)
 * [Helix Repositories](https://github.com/search?p=1&q=topic%3Ahelix+org%3Aadobe&type=Repositories)

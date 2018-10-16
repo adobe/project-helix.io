@@ -60,10 +60,11 @@ function filterNav(navChildren, path, isDev, logger) {
 // that returns a function (with payload, config, logger as arguments)
 // that calls next (after modifying the payload a bit)
 async function pre(payload, action) {
-    logger.debug(`summary_html.pre.js - Requested path: ${action.request.params.path}`);
     const {
         logger
     } = action;
+
+    logger.debug(`summary_html.pre.js - Requested path: ${action.request.params.path}`);
 
     try {
         if (!payload.content) {

@@ -33,7 +33,10 @@
             </h1>
         </div>
         <div class="search">
-            <input type="text" value="" placeholder="Search" class="searchinput">
+            <form action="https://www.google.com/search" method="GET">
+                <input type="text" value="" placeholder="Search" class="searchinput" name="q">
+                <input type="hidden" value="site:www.project-helix.io" name="q">
+            </form>
         </div>
     </div>
     <div class="main">

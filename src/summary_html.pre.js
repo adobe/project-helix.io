@@ -25,7 +25,7 @@ const DOMAINS = [{
 }];
 
 function filterNav(navChildren, path, isDev, logger) {
-    logger.debug('html-pre.js - Extracting nav');
+    logger.debug('summary_html.pre.js - Extracting nav');
 
     if (navChildren && navChildren.length > 0) {
         let currentFolderPath = path.substring(0, path.lastIndexOf('/'));
@@ -48,11 +48,11 @@ function filterNav(navChildren, path, isDev, logger) {
             // replace md extension by .html
             .replace(new RegExp('.md"', 'g'), '.html"'));
             
-        logger.debug(`html-pre.js - Managed to collect some content for the nav: ${nav.length}`);
+        logger.debug(`summary_html.pre.js - Managed to collect some content for the nav: ${nav.length}`);
         return nav;
     }
 
-    logger.debug('html-pre.js - Navigation payload has no children');
+    logger.debug('summary_html.pre.js - Navigation payload has no children');
     return [];
 }
 
@@ -60,14 +60,14 @@ function filterNav(navChildren, path, isDev, logger) {
 // that returns a function (with payload, config, logger as arguments)
 // that calls next (after modifying the payload a bit)
 async function pre(payload, action) {
-    console.log(`SUMMARY Requested path: ${action.request.params.path}`);
+    logger.debug(`summary_html.pre.js - Requested path: ${action.request.params.path}`);
     const {
         logger
     } = action;
 
     try {
         if (!payload.content) {
-            logger.debug('html-pre.js - Payload has no resource, nothing we can do');
+            logger.debug('summary_html.pre.js - Payload has no resource, nothing we can do');
             return payload;
         }
 
@@ -81,7 +81,7 @@ async function pre(payload, action) {
 
         return p;
     } catch (e) {
-        logger.error(`Error while executing html.pre.js: ${e.stack || e}`);
+        logger.error(`summary_html.pre.js - Error while executing pre.js: ${e.stack || e}`);
         return {
             error: e,
         };

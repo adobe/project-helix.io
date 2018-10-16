@@ -18,33 +18,88 @@ Helix is the new experience management service to create, manage, and deliver gr
 
 Better than a long story, just try it!
 
-## Pre-Requisites
+## Start Developing Your First Helix Project in 60 Seconds
 
-[Git](https://git-scm.com/) should be [installed](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [setup](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup) on your machine.
+### Pre-Requisites
 
-## Start developing with Helix in 60 Seconds
+1. [Git](https://git-scm.com/) should be [installed](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [setup](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup) on your machine.
+2. For the sake of this short walkthrough we assume you are using [Visual Studio Code](https://code.visualstudio.com), our IDE of choice. However, any other JavaScript IDE would do as well.
 
-1. Download and install `hlx`, the [Helix command line tool](https://github.com/adobe/helix-cli)
+### Let's Get Started
+
+#### 1. Download and Install `hlx`, the Helix Command Line Tool
 
 ```bash
-# we'll provide a shorter and stable download url soon...
-curl -OL https://github.com/adobe/helix-cli/releases/download/v0.7.9/hlx_install.sh
+# we'll provide a more concise download url soon...
+curl -OL https://github.com/adobe/helix-cli/releases/download/v0.8.0/hlx_install.sh
+
 chmod +x hlx_install.sh
+
 ./hlx_install.sh
 ```
 
-2. Create your first Helix project
+#### 2. Create Your First Helix Project
 
 ```bash
-# your new project will be called 'hello_helix'
+# our new project will be called 'hello_helix'
 hlx demo hello_helix
 ```
 
-3. Launch the Helix local development environment
+#### 3. Open the project in Visual Studio Code
 
 ```bash
 cd hello_helix
+code .
+```
+
+#### 4. Launch the Local Helix Development Environment
+
+```bash
 hlx up
 ```
 
-A browser window opens, your first site is running!
+A browser window opens, rendering the project's generated web page.
+
+![Rendered web page](assets/browser.png)
+
+#### 5. Edit some content
+
+In the IDE, navigate to `index.md` in the left pane and double-click to open it. Edit the document and save the changes.
+
+![Edit content](assets/edit-content.png)
+
+Refresh the browser and see the result.
+
+![Edited web page](assets/browser-edited.png)
+
+#### 6. Edit style sheet
+
+In the IDE, navigate to `src/style.css` in the left pane and double-click to open it. Change e.g. the background color and save the changes.
+
+![Edit CSS](assets/edit-css.png)
+
+Refresh the browser and see the result.
+
+#### 7. Start Debugging
+
+##### Set a Breakpoint in your JavaScript code
+
+In the IDE, navigate to `src/html.pre.js` in the left pane and double-click to open it. Set a breakpoint in the body of the `pre` function, switch to the Debug view and click on the green arrow in the toolbar.
+
+![Open .js file](assets/open-js.png)
+
+##### Trigger the Breakpoint
+
+Refresh the Browser, the Debugger will pause at the breakpoint. Take a look at the `payload` object in the Variables pane.
+
+![Halted at breakpoint in JavaScript code](assets/js-breakpoint.png)
+
+Click **Continue (F5)** to resume execution. Try changing the code, save the changes and see the results in the browser.
+
+#### 8. Now Debug your HTL
+
+In the IDE, navigate to `src/html.htl` in the left pane and double-click to open it. Set a breakpoint on a line containing a `${...}` variable reference. Refresh the Browser, the Debugger will pause at the breakpoint.
+
+![Halted at breakpoint in HTL template](assets/htl-breakpoint.png)
+
+Congratulations! You've just got your hands dirty on your first Helix Project!

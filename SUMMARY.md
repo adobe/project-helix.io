@@ -17,7 +17,6 @@
 * [Home](project-helix.io/index.md)
 * Platform Docs
   * [Where is the content ?](project-helix.io/doc/getting-started/content.md)
-  * [Debug the `pre.js`](project-helix.io/doc/getting-started/debug.md)
   * [The `hlx` command line](helix-cli/README.md)
   * [Anatomy the Pipeline](hypermedia-pipeline/README.md)
   * [How to contribute](project-helix.io/doc/general/contributing.md)

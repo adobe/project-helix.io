@@ -90,3 +90,9 @@ async function pre(payload, action) {
 }
 
 module.exports.pre = pre;
+
+// exports for testing purpose only
+module.exports.filterNav = filterNav;
+
+
+

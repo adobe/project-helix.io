@@ -25,6 +25,22 @@ jobs:
                 - node_modules
             key: v1-dependencies-{{ checksum "package.json" }}
 
+        # run tests!
+        - run: mkdir junit
+        - run:
+            name: prepare test git user
+            command: git config --global user.email "you@example.com" && git config --global user.name "CircleCi Build"
+        - run:
+            name: Running Tests
+            command: npx mocha --reporter mocha-junit-reporter
+            environment:
+            MOCHA_FILE: junit/test-results.xml
+            when: always    
+
+        - store_test_results:
+            path: junit
+
+
         - run:
             name: Building Templates
             command: npx hlx build

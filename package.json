@@ -7,10 +7,6 @@
     "doc": "doc",
     "test": "test"
   },
-  "devDependencies": {
-    "mocha": "^5.2.0",
-    "nock": "^10.0.1"
-  },
   "scripts": {
     "test": "mocha"
   },
@@ -27,5 +23,10 @@
   "dependencies": {
     "request": "^2.88.0",
     "request-promise": "^4.2.2"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "mocha-junit-reporter": "^1.18.0",
+    "nock": "^10.0.1"
   }
 }

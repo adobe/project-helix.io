@@ -45,8 +45,6 @@ jobs:
             name: Building Templates
             command: npx hlx build
 
-        - run: git diff
-
         - run:
             name: Deploying to Adobe I/O Runtime
             command: npx hlx deploy --no-auto

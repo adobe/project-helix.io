@@ -32,7 +32,7 @@ jobs:
             command: git config --global user.email "you@example.com" && git config --global user.name "CircleCi Build"
         - run:
             name: Running Tests
-            command: npx mocha --recursive --reporter mocha-junit-reporter
+            command: npx mocha --reporter mocha-junit-reporter "test/**/*"
             environment:
             MOCHA_FILE: junit/test-results.xml
             when: always    

@@ -136,7 +136,7 @@ function extractLastModifiedFromCommitsHistory(commits, logger) {
  * @param String ref Ref
  * @param {Object} logger Logger
  */
-async function computeNavPath(isDev, logger) {
+function computeNavPath(isDev, logger) {
   logger.debug('html-pre.js - Fetching the nav');
 
   /*
@@ -231,7 +231,7 @@ async function pre(payload, action) {
       const isDev = action.request.headers.host ? action.request.headers.host.indexOf('localhost') != -1 : false;
 
       p.content.nav =
-        await computeNavPath(
+        computeNavPath(
           isDev,
           logger,
         );
@@ -249,3 +249,10 @@ async function pre(payload, action) {
 }
 
 module.exports.pre = pre;
+
+// exports for testing purpose only
+module.exports.removeFirstTitle = removeFirstTitle;
+module.exports.fetchCommitsHistory = fetchCommitsHistory;
+module.exports.extractCommittersFromCommitsHistory = extractCommittersFromCommitsHistory;
+module.exports.extractLastModifiedFromCommitsHistory = extractLastModifiedFromCommitsHistory;
+module.exports.computeNavPath = computeNavPath;

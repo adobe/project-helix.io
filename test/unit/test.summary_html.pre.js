@@ -11,16 +11,9 @@
  */
 /* global describe, it */
 const assert = require('assert');
-const defaultPre = require('../src/summary_html.pre.js');
+const defaultPre = require('../../src/summary_html.pre.js');
 
-const loggerMock = {
-  log: () => {},
-  debug: () => {},
-  info: () => {},
-  warn: () => {},
-  error: () => {},
-  silly: () => {},
-};
+const { loggerMock } = require('./utils');
 
 describe('Testing pre requirements for main function', () => {
   it('Exports pre', () => {
@@ -46,7 +39,7 @@ describe('Testing extractNav', () => {
     );
 
     assert.deepEqual(output, [
-      '\n', 
+      '\n',
       '<ul>\n<li>a</li>\n<li>b</li>\n<li><a href=\"/current/path/link.html\">link</a></li>\n</ul>'
     ]);
   });
@@ -64,7 +57,7 @@ describe('Testing extractNav', () => {
     );
 
     assert.deepEqual(output, [
-      '\n', 
+      '\n',
       '<ul>\n<li>a</li>\n<li>b</li>\n<li><a href=\"/current/path/subdomains/hypermedia-pipeline/link.html\">link</a></li>\n</ul>'
     ]);
   });
@@ -82,7 +75,7 @@ describe('Testing extractNav', () => {
     );
 
     assert.deepEqual(output, [
-      '\n', 
+      '\n',
       '<ul>\n<li>a</li>\n<li>b</li>\n<li><a href=\"https://pipeline.project-helix.io/link.html\">link</a></li>\n</ul>'
     ]);
   });

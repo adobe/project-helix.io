@@ -12,16 +12,9 @@
 /* global describe, it */
 const assert = require('assert');
 const nock = require('nock');
-const defaultPre = require('../src/html.pre.js');
+const defaultPre = require('../../src/html.pre.js');
 
-const loggerMock = {
-  log: () => {},
-  debug: () => {},
-  info: () => {},
-  warn: () => {},
-  error: () => {},
-  silly: () => {},
-};
+const { loggerMock } = require('./utils');
 
 describe('Testing pre requirements for main function', () => {
   it('Exports pre', () => {

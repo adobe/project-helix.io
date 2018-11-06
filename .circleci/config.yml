@@ -41,22 +41,22 @@ jobs:
             path: junit
 
         - store_artifacts:
-          path: junit
+            path: junit
 
-        - run:
-            name: Building Templates
-            command: npx hlx build
+        # - run:
+        #    name: Building Templates
+        #    command: npx hlx build
 
-        - run: git status
+        # - run: git status
 
-        - run:
-            name: Deploying to Adobe I/O Runtime
-            command: npx hlx deploy --no-auto
+        # - run:
+        #    name: Deploying to Adobe I/O Runtime
+        #    command: npx hlx deploy --no-auto
 
-        - run:
-            name: Activate CDN
-            command: npx hlx publish
+        # - run:
+        #    name: Activate CDN
+        #    command: npx hlx publish
 
-        - run:
-            name: Test Performance
-            command: npx hlx perf
+        # - run:
+        #    name: Test Performance
+        #    command: npx hlx perf

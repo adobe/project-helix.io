@@ -26,6 +26,7 @@ describe('project-helix.io renders properly', function suite() {
             async: true
         }, (code, stdout, stderr) => {
             assert.ok(!stdout.includes('[hlx] error'), 'No error message allowed');
+            assert.ok(!stdout.includes('[hlx] warn'), 'No warning message allowed');
         });
 
         await sleep(3000);

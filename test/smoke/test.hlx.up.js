@@ -15,14 +15,17 @@ const $ = require('shelljs');
 
 const { assertHttp, sleep } = require('./utils'); 
 
+const HLX_SMOKE_EXEC = process.env.HLX_SMOKE_EXEC || 'hlx';
+console.debug(`Running smoke test using: ${HLX_SMOKE_EXEC}`);
+
 describe('project-helix.io renders properly', function suite() {
     this.timeout(10000);
 
     let hlxup;
 
     beforeEach(async function before() {
-        hlxup = $.exec('hlx up --open false', {
-            silent: true,
+        hlxup = $.exec(`${HLX_SMOKE_EXEC} up --open false`, {
+            // silent: true,
             async: true
         }, (code, stdout, stderr) => {
             assert.ok(!stdout.includes('[hlx] error'), 'No error message allowed');

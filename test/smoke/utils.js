@@ -20,7 +20,7 @@ async function assertHttp(url, status, spec, replacements = []) {
                 assert.equal(res.statusCode, status);
             } catch (e) {
                 res.resume();
-                reject(e);
+                reject(new Error(`Error while checking status code for request ${url}`, e));
             }
 
             res
@@ -38,7 +38,7 @@ async function assertHttp(url, status, spec, replacements = []) {
                         }
                         resolve(data);
                     } catch (e) {
-                        reject(e);
+                        reject(new Error(`Error while reading data for request ${url}`, e));
                     }
                 });
         }).on('error', (e) => {
@@ -47,7 +47,7 @@ async function assertHttp(url, status, spec, replacements = []) {
             if (status === 404 || status === 408) {
                 resolve();
             } else {
-                reject(new Error('Request timeout'));
+                reject(new Error(`Request timeout: ${url}`));
             }
         });
     });

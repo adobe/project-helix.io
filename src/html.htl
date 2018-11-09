@@ -16,8 +16,8 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-    <link rel="icon" href="./static/favicon.ico" />
-    <link rel="stylesheet" href="./static/styles.css" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/styles.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" />
     <script src="https://momentjs.com/downloads/moment.min.js"></script>
     <title>${content.title}</title>
@@ -28,7 +28,7 @@
         <div class="title">
             <h1>
                 <span class="menu-icon"></span>
-                <img src="./static/helix_logo.png" />
+                <img src="/helix_logo.png" />
                 Documentation
             </h1>
         </div>

@@ -9,7 +9,6 @@
 # governing permissions and limitations under the License.
 
 content: https://github.com/adobe/project-helix.io.git
-staticRoot: /webroot
 
 strains:
   default:
@@ -19,6 +18,14 @@ strains:
       repo: project-helix.io
       ref: master
       owner: adobe
+    static:
+      protocol: https
+      hostname: github.com
+      repo: project-helix.io
+      ref: master
+      owner: adobe
+      path: /webroot
+
   client:
     code: /helix/default/https---github-com-adobe-project-helix-io-git--master--
     condition: req.http.host == "client.project-helix.io"
@@ -26,6 +33,14 @@ strains:
       repo: helix-cli
       ref: master
       owner: adobe
+    static:
+      protocol: https
+      hostname: github.com
+      repo: project-helix.io
+      ref: master
+      owner: adobe
+      path: /webroot
+
   pipeline:
     code: /helix/default/https---github-com-adobe-project-helix-io-git--master--
     condition: req.http.host == "pipeline.project-helix.io"
@@ -33,3 +48,10 @@ strains:
       repo: hypermedia-pipeline
       ref: master
       owner: adobe
+    static:
+      protocol: https
+      hostname: github.com
+      repo: project-helix.io
+      ref: master
+      owner: adobe
+      path: /webroot

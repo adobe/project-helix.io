@@ -17,6 +17,9 @@ code: https://github.com/adobe/project-helix.io.git
 # defines the default static root relative to the code repository
 staticRoot: /webroot
 
+# defines the directory index file
+directoryIndex: index.html
+
 strains:
   default:
     code: /helix/default/https---github-com-adobe-project-helix-io-git--master--

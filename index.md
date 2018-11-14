@@ -30,8 +30,7 @@ Better than a long story, just try it!
 #### 1. Install `hlx`, the Helix Command Line Tool
 
 ```bash
-# we'll provide a more concise download url soon...
-curl -sL http://github.com/adobe/helix-cli/raw/master/cli_install.sh | sh
+curl -sL http://www.project-helix.io/cli.sh | sh
 ```
 
 #### 2. Create Your First Helix Project

@@ -23,7 +23,7 @@
   "homepage": "https://github.com/adobe/project-helix.io#readme",
   "dependencies": {
     "request": "^2.88.0",
-    "request-promise": "^4.2.2"
+    "request-promise-native": "^1.0.5"
   },
   "devDependencies": {
     "mocha": "^5.2.0",

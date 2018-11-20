@@ -23,7 +23,7 @@ directoryIndex: index.html
 strains:
   default:
     code: /helix/default/git-github-com-adobe-project-helix-io-git--master--html
-    condition: req.http.host == "www.project-helix.io"
+    url: https://www.project-helix.io
     content:
       repo: project-helix.io
       ref: master
@@ -31,7 +31,7 @@ strains:
 
   client:
     code: /helix/default/git-github-com-adobe-project-helix-io-git--master--html
-    condition: req.http.host == "client.project-helix.io"
+    url: https://client.project-helix.io
     content:
       repo: helix-cli
       ref: master
@@ -39,7 +39,7 @@ strains:
 
   pipeline:
     code: /helix/default/git-github-com-adobe-project-helix-io-git--master--html
-    condition: req.http.host == "pipeline.project-helix.io"
+    url: https://pipeline.project-helix.io
     content:
       repo: hypermedia-pipeline
       ref: master

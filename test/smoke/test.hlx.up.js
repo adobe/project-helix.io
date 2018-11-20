@@ -44,20 +44,20 @@ describe('project-helix.io renders properly', function suite() {
 
     it('Pages are rendered using project htl scripts', async () => {
         // test for root request
-        let html = await assertHttp('http://localhost:3000', 200);
+        let html = await assertHttp('http://localhost:3000', 200).toLowerCase();
 
-        assert.ok(html.toLowerCase().includes('<body>'), 'html.htl is rendered')
-        assert.ok(html.toLowerCase().includes('<div class="summary">'), 'summary_html.htl is included')
+        assert.ok(html.includes('<body>'), 'html.htl is rendered and outputs a body tag')
+        assert.ok(html.includes('<div class="summary">'), 'summary_html.htl is included')
 
         // test specific URL
-        html = await assertHttp('http://localhost:3000/README.html', 200);
+        html = await assertHttp('http://localhost:3000/README.html', 200).toLowerCase();
 
-        assert.ok(html.toLowerCase().includes('<body>'), 'html.htl is rendered');
-        assert.ok(html.toLowerCase().includes('<div class="summary">'), 'summary_html.htl is included');
+        assert.ok(html.includes('<body>'), 'html.htl is rendered and outputs a body tag');
+        assert.ok(html.includes('<div class="summary">'), 'nav (summary_html.htl) is included via ESI include');
 
         // check if logo can be downloaded
         const match = html.match(/("([^"]|"")*helix_logo.png")/g);
-        assert.equal(match.length, 1, 'Logo image is present in the HTML');
+        assert.equal(match.length, 1, 'helix_logo.png is present in the HTML');
         let logoURL = match[0].split('"')[1];
         if(logoURL.indexOf('./') === 0) {
             logoURL = logoURL.substring(1);

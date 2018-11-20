@@ -23,7 +23,7 @@ describe('project-helix.io renders properly', function suite() {
 
     let hlxup;
 
-    beforeEach(async function before() {
+    before(async function before() {
         hlxup = $.exec(`${HLX_SMOKE_EXEC} up --open false`, {
             // silent: true,
             async: true
@@ -36,28 +36,35 @@ describe('project-helix.io renders properly', function suite() {
         await sleep(5000);
     });
     
-    afterEach(async function after() {
+    after(async function after() {
         hlxup.kill();
         hlxup = null;
         await sleep(1000);
     });
 
-    it('Pages are rendered using project htl scripts', async () => {
+    it('Root ("/" / index.html) is rendered using project htl scripts', async () => {
         // test for root request
-        let html = await assertHttp('http://localhost:3000', 200).toLowerCase();
+        let html = (await assertHttp('http://localhost:3000', 200)).toLowerCase();
 
-        assert.ok(html.includes('<body>'), 'html.htl is rendered and outputs a body tag')
-        assert.ok(html.includes('<div class="summary">'), 'summary_html.htl is included')
+        assert.ok(html.includes('<body>'), 'index page is rendered - at least contains a body tag')
+        assert.ok(html.includes('<div class="summary">'), 'nav in index (summary_html.htl) is included via ESI include');
+    });
 
+    it('README.html page is rendered using project htl scripts', async () => {
         // test specific URL
-        html = await assertHttp('http://localhost:3000/README.html', 200).toLowerCase();
+        html = (await assertHttp('http://localhost:3000/README.html', 200)).toLowerCase();
 
-        assert.ok(html.includes('<body>'), 'html.htl is rendered and outputs a body tag');
-        assert.ok(html.includes('<div class="summary">'), 'nav (summary_html.htl) is included via ESI include');
+        assert.ok(html.includes('<body>'), 'README page is rendered - at least contains a body tag');
+        assert.ok(html.includes('<div class="summary">'), 'nav in README (summary_html.htl) is included via ESI include');
+
+    });
+
+    it('index.html page source check', async () => {
+        let html = (await assertHttp('http://localhost:3000/index.html', 200)).toLowerCase();
 
         // check if logo can be downloaded
         const match = html.match(/("([^"]|"")*helix_logo.png")/g);
-        assert.equal(match.length, 1, 'helix_logo.png is present in the HTML');
+        assert.equal(match.length, 1, 'helix_logo.png is present in the HTML source');
         let logoURL = match[0].split('"')[1];
         if(logoURL.indexOf('./') === 0) {
             logoURL = logoURL.substring(1);

@@ -20,7 +20,7 @@ Here are the instructions to store your content on github and tell Helix to cons
 5. Add following line to file (and replace `<your org>`)
 
 ```yaml
-contentRepo: https://github.com/<your org>/hellohelixcontent
+content: https://github.com/<your org>/hellohelixcontent
 ```
 
 6. Restart `hlx up`

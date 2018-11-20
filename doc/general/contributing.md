@@ -8,7 +8,7 @@ A lot of the code of Project Helix and many of the most exciting areas for contr
 
 1. [HTL Engine](https://github.com/adobe/htlengine)
 2. [HelpX on Helix](https://github.com/adobe/helix-helpx)
-3. [Petridish](https://github.com/adobe/petridish)
+3. [helix-simulator](https://github.com/adobe/helix-simulator)
 4. [OpenWhisk Loggly Wrapper](https://github.com/adobe/openwhisk-loggly-wrapper)
 5. [HTL/Sightly Plugin for Parcel](https://github.com/adobe/parcel-plugin-htl)
 6. [Hypermedia Pipeline](https://github.com/adobe/hypermedia-pipeline)

@@ -30,7 +30,7 @@ Better than a long story, just try it!
 #### 1. Install `hlx`, the Helix Command Line Tool
 
 ```bash
-curl -sL http://www.project-helix.io/cli.sh | sh
+curl -sL https://www.project-helix.io/cli.sh | sh
 ```
 
 #### 2. Create Your First Helix Project

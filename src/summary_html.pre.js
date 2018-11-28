@@ -56,6 +56,52 @@ function filterNav(navChildren, path, isDev, logger) {
     return [];
 }
 
+function removeHeading(document, logger) {
+    const h1 = Array.from(document.getElementsByTagName('h1'));
+    logger.debug('Found h1: ' + h1.length);
+    h1.forEach(e => {
+        logger.debug('removing ' + e);
+        e.remove();
+    });
+}
+
+function rewriteLinks(document, isDev, currentFolderPath, logger) {
+    const links = Array.from(document.getElementsByTagName('a'));
+    logger.debug('Found links: ' + links.length);
+
+    // build a list of rewriting rules from the mapping defined in DOMAINS
+    const rewrites = DOMAINS.map(mapping => {
+        return function(url) {
+            return url.replace(new RegExp(mapping.name, 'g'), isDev ? mapping.dev : mapping.prod);
+        }
+    });
+
+    // go over each rewriting function and apply it to the passed URL
+    function rewrite(url) {
+        return rewrites.reduce((rurl, rewriter) => rewriter(rurl), url);
+    }
+
+    function md2html(url) {
+        // pipeline does this only for relative links, but we do it for all links
+        return url.replace(/\.md$/, '.html');
+    }
+
+    // do some stuff with the current folder path, at least for non-absolute URLs
+    function path(url) {
+        if (/^https?:\/\//.test(url)) {
+            return currentFolderPath + '/' + url
+        }
+        return url;
+    }
+
+    links.forEach(e => {
+        logger.debug('rewriting ' + e.href);
+        e.href = rewrite(e.href);
+        e.href = path(e.href);
+        e.href = md2html(e.href);
+    });
+}
+
 // module.exports.pre is a function (taking next as an argument)
 // that returns a function (with payload, config, logger as arguments)
 // that calls next (after modifying the payload a bit)
@@ -64,28 +110,19 @@ async function pre(payload, action) {
         logger
     } = action;
 
-    logger.debug(`summary_html.pre.js - Requested path: ${action.request.params.path}`);
+    if (payload.content.document) {
+        const isDev = action.request.headers.host ? action.request.headers.host.indexOf('localhost') != -1 : false;
 
-    try {
-        if (!payload.content) {
-            logger.debug('summary_html.pre.js - Payload has no resource, nothing we can do');
-            return payload;
-        }
+        logger.debug('Working with DOM, development: ', isDev);
+        document = payload.content.document;
 
-        const p = payload;
+        removeHeading(document, logger);
+        rewriteLinks(document, isDev, action.request.params.path, logger);
+        
 
-        // TODO find a better way or implement one
-        isDev = action.request.headers.host ? action.request.headers.host.indexOf('localhost') != -1 : false;
-
-        // clean up the resource
-        p.content.children = filterNav(p.content.children, action.request.params.path, isDev, logger);
-
-        return p;
-    } catch (e) {
-        logger.error(`summary_html.pre.js - Error while executing pre.js: ${e.stack || e}`);
-        return {
-            error: e,
-        };
+        return payload;
+    } else {
+        logger.error(`summary_html.pre.js - could not get a DOM to work with`);
     }
 }
 

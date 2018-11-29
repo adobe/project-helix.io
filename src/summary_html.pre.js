@@ -24,38 +24,6 @@ const DOMAINS = [{
     'prod': 'https://client.project-helix.io'
 }];
 
-function filterNav(navChildren, path, isDev, logger) {
-    logger.debug('summary_html.pre.js - Extracting nav');
-
-    if (navChildren && navChildren.length > 0) {
-        let currentFolderPath = path.substring(0, path.lastIndexOf('/'));
-        let nav = navChildren;
-
-        // remove first title
-        if (nav && nav.length > 0) {
-            nav = nav.slice(1);
-        }
-
-        DOMAINS.forEach(domain => {
-            nav = nav.map(element => {
-                return element.replace(new RegExp(domain.name, 'g'), isDev ? domain.dev : domain.prod);
-            });
-        });
-
-        nav = nav.map(element => element
-            // prefix with currentFolderPath from links not starting with http:// or https://
-            .replace(new RegExp('href="((?!http.*://))', 'g'), `href="${currentFolderPath}/`)
-            // replace md extension by .html
-            .replace(new RegExp('.md"', 'g'), '.html"'));
-            
-        logger.debug(`summary_html.pre.js - Managed to collect some content for the nav: ${nav.length}`);
-        return nav;
-    }
-
-    logger.debug('summary_html.pre.js - Navigation payload has no children');
-    return [];
-}
-
 function removeHeading(document, logger) {
     const h1 = Array.from(document.getElementsByTagName('h1'));
     logger.debug('Found h1: ' + h1.length);
@@ -88,8 +56,8 @@ function rewriteLinks(document, isDev, currentFolderPath, logger) {
 
     // do some stuff with the current folder path, at least for non-absolute URLs
     function path(url) {
-        if (/^https?:\/\//.test(url)) {
-            return currentFolderPath + '/' + url
+        if (!/^https?:\/\//.test(url)) {
+            return currentFolderPath.substring(0, currentFolderPath.lastIndexOf('/')) + '/' + url
         }
         return url;
     }
@@ -126,10 +94,7 @@ async function pre(payload, action) {
     }
 }
 
-module.exports.pre = pre;
-
-// exports for testing purpose only
-module.exports.filterNav = filterNav;
+module.exports = { pre, removeHeading, rewriteLinks }
 
 
 

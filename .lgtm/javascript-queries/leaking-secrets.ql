@@ -1,3 +1,12 @@
+/**
+ * @name Adobe Project Helix: Leaking Secrets
+ * @description the `action.secrets` property secret and should not be logged or recorded
+ * @kind problem
+ * @problem.severity warning
+ * @id js/helix/leaking-secrets
+ * @tags security
+ * @precision very-high
+ */
 import javascript
 
 /** Gets an `action` parameter (that is, the second parameter) of a `pre` function. */

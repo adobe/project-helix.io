@@ -12,6 +12,7 @@
 /* global describe, it */
 const assert = require('assert');
 const nock = require('nock');
+const { JSDOM } = require('jsdom');
 const defaultPre = require('../../src/html.pre.js');
 
 const { loggerMock } = require('./utils');
@@ -27,16 +28,28 @@ describe('Testing pre requirements for main function', () => {
 });
 
 describe('Testing removeFirstTitle', () => {
-  it('Empty children', () => {
-    const children = [];
-    const output = defaultPre.removeFirstTitle(children, loggerMock);
-    assert.deepEqual(output, []);
+  it('Empty document', () => {
+    const before = new JSDOM(``).window.document;
+    const after = new JSDOM(``).window.document;
+    defaultPre.removeFirstTitle(before, loggerMock);
+    assert.equal(before.body.innerHTML, after.body.innerHTML);
   });
 
   it('Remove first child', () => {
-    const children = ['a', 'b', 'c'];
-    const output = defaultPre.removeFirstTitle(children, loggerMock);
-    assert.deepEqual(output, ['b', 'c']);
+    const before = new JSDOM(`<div>
+    <p>Hello</p>
+    <h3>Remove Me</h3>
+    <h1>Keep me</h1>
+    <p>World</p>
+    </div>`).window.document;
+    const after = new JSDOM(`<div>
+    <p>Hello</p>
+    
+    <h1>Keep me</h1>
+    <p>World</p>
+    </div>`).window.document;
+    defaultPre.removeFirstTitle(before, loggerMock);
+    assert.equal(before.body.innerHTML, after.body.innerHTML);
   });
 });
 

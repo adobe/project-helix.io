@@ -19,6 +19,7 @@ const request = require('request-promise-native');
  */
 function removeFirstTitle(document, logger) {
   logger.debug('html-pre.js - Removing first title');
+  console.log(document);
   const heading = document.querySelector('h1, h2, h3, h4, h5, h6');
   if (heading) {
     logger.debug('Removing ' + heading);

@@ -82,7 +82,7 @@ async function pre(payload, action) {
         const isDev = action.request.headers.host ? action.request.headers.host.indexOf('localhost') != -1 : false;
 
         logger.debug('Working with DOM, development: ', isDev);
-        document = payload.content.document;
+        const document = payload.content.document;
 
         removeHeading(document, logger);
         rewriteLinks(document, isDev, action.request.params.path, logger);

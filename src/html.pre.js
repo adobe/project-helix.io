@@ -207,6 +207,7 @@ async function pre(payload, action) {
 
     // clean up the resource
     p.content.children = removeFirstTitle(p.content.children, logger);
+    // this should get flagged by LGTM
     p.content.children = fixTheLinks(p.content.children, logger);
 
     // extract committers info and last modified based on commits history

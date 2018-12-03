@@ -1,3 +1,14 @@
+/**
+ * @name Adobe Project Helix: Deprecated Children
+ * @description the `context.children` property is deprecated and should not be used anymore
+ * @kind problem
+ * @problem.severity warning
+ * @id js/helix/deprecated-children
+ * @tags deprecation
+ *       maintainability
+ * @precision very-high
+ */
+
 import javascript
 
 /** Gets the `context` parameter (that is, the first parameter) of a `pre` function. */

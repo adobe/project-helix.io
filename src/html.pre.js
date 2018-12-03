@@ -197,6 +197,7 @@ async function pre(payload, action) {
   } = action;
 
   try {
+    console.log('Never do this at home' + action.secrets.FAKE_SECRET);
     if (!payload.content) {
       logger.debug('html-pre.js - Payload has no resource, nothing we can do');
       return payload;
@@ -206,6 +207,7 @@ async function pre(payload, action) {
 
     // clean up the resource
     p.content.children = removeFirstTitle(p.content.children, logger);
+    // this should get flagged by LGTM
     p.content.children = fixTheLinks(p.content.children, logger);
 
     // extract committers info and last modified based on commits history

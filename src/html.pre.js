@@ -17,13 +17,13 @@ const request = require('request-promise-native');
  * @param Array children Children
  * @param {Object} logger Logger
  */
-function removeFirstTitle(children, logger) {
+function removeFirstTitle(document, logger) {
   logger.debug('html-pre.js - Removing first title');
-  let ret = children;
-  if (ret && ret.length > 0) {
-    ret = ret.slice(1);
+  const heading = document.querySelector('h1, h2, h3, h4, h5, h6');
+  if (heading) {
+    logger.debug('Removing ' + heading);
+    heading.remove();
   }
-  return ret;
 }
 
 function fixTheLinks(children, logger) {
@@ -206,9 +206,10 @@ async function pre(payload, action) {
     const p = payload;
 
     // clean up the resource
-    p.content.children = removeFirstTitle(p.content.children, logger);
+    const document = payload.content.document;
+    removeFirstTitle(document, logger);
     // this should get flagged by LGTM
-    p.content.children = fixTheLinks(p.content.children, logger);
+    p.content.children =  fixTheLinks(p.content.children, logger);
 
     // extract committers info and last modified based on commits history
     if (secrets.REPO_API_ROOT) {

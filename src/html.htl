@@ -53,7 +53,7 @@
                         <span class="lastModified">Last modified <time datetime="${content.lastModified.raw}">${content.lastModified.display}</time></span>
                     </div>
                 </div>
-                <div data-sly-list="${content.children}">${item}</div>
+                <div data-sly-test="${content.document}">${content.document.body.innerHTML}</div>
             </div>
         </div>
     </div>

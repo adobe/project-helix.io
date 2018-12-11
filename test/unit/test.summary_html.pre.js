@@ -11,72 +11,72 @@
  */
 /* global describe, it */
 const assert = require('assert');
-const defaultPre = require('../../src/summary_html.pre.js');
+const { JSDOM } = require('jsdom');
+const {pre, removeHeading, rewriteLinks } = require('../../src/summary_html.pre.js');
 
 const { loggerMock } = require('./utils');
 
 describe('Testing pre requirements for main function', () => {
   it('Exports pre', () => {
-    assert.ok(defaultPre.pre);
+    assert.ok(pre);
   });
 
   it('pre is a function', () => {
-    assert.equal('function', typeof defaultPre.pre);
+    assert.equal('function', typeof pre);
   });
 });
 
-describe('Testing extractNav', () => {
-  it('filterNav - basic', () => {
-    const output = defaultPre.filterNav(
-      [
-        '<h1>Table of contents</h1>',
-        '\n',
-        '<ul>\n<li>a</li>\n<li>b</li>\n<li><a href="link.md">link</a></li>\n</ul>',
-      ],
-      '/current/path/index.md',
-      true,
-      loggerMock,
-    );
+describe('Testing removeHeading', () => {
+  it('removeHeading() removes h1 elements', () => {
+    const before = new JSDOM(`<div>
+      <h1>A Heading</h1>
+      <p>Not a heading</p>
+    </div>`).window.document;
 
-    assert.deepEqual(output, [
-      '\n',
-      '<ul>\n<li>a</li>\n<li>b</li>\n<li><a href=\"/current/path/link.html\">link</a></li>\n</ul>'
-    ]);
+    console.log(before);
+
+    const after = new JSDOM(`<div>\n      \n      <p>Not a heading</p>\n    </div>`).window.document;
+    removeHeading(before, loggerMock);
+    assert.equal(before.body.innerHTML, after.body.innerHTML);
+  });
+});
+
+describe('Testing rewriteLinks', () => {
+  it('rewriteLinks() - basic', () => {
+    const before = 
+      new JSDOM(`<ul>\n<li>a</li>\n<li>b</li>\n<li><a href="link.md">link</a></li>\n</ul>`).window.document;
+
+    const after =
+      new JSDOM(`<ul>\n<li>a</li>\n<li>b</li>\n<li><a href=\"/current/path/link.html\">link</a></li>\n</ul>`).window.document;
+
+    rewriteLinks(before, true, '/current/path/index.md', loggerMock);
+
+    assert.equal(before.body.innerHTML, after.body.innerHTML);
   });
 
-  it('filterNav - dev reference', () => {
-    const output = defaultPre.filterNav(
-      [
-        '<h1>Table of contents</h1>',
-        '\n',
-        '<ul>\n<li>a</li>\n<li>b</li>\n<li><a href="hypermedia-pipeline/link.md">link</a></li>\n</ul>',
-      ],
-      '/current/path/index.md',
-      true,
-      loggerMock,
-    );
+  it('rewriteLinks() - dev', () => {
+    const before = 
+      new JSDOM(`<ul>\n<li>a</li>\n<li>b</li>\n<li><a href="hypermedia-pipeline/link.md">link</a></li>\n</ul>`).window.document;
 
-    assert.deepEqual(output, [
-      '\n',
-      '<ul>\n<li>a</li>\n<li>b</li>\n<li><a href=\"/current/path/subdomains/hypermedia-pipeline/link.html\">link</a></li>\n</ul>'
-    ]);
+    const after =
+      new JSDOM(`<ul>\n<li>a</li>\n<li>b</li>\n<li><a href=\"/current/path/subdomains/hypermedia-pipeline/link.html\">link</a></li>\n</ul>`).window.document;
+
+    rewriteLinks(before, true, '/current/path/index.md', loggerMock);
+
+    assert.equal(before.body.innerHTML, after.body.innerHTML);
   });
 
-  it('filterNav - prod reference', () => {
-    const output = defaultPre.filterNav(
-      [
-        '<h1>Table of contents</h1>',
-        '\n',
-        '<ul>\n<li>a</li>\n<li>b</li>\n<li><a href="hypermedia-pipeline/link.md">link</a></li>\n</ul>',
-      ],
-      '/current/path/index.md',
-      false,
-      loggerMock,
-    );
+  it('rewriteLinks() - prod', () => {
+    const before = 
+      new JSDOM(`<ul>\n<li>a</li>\n<li>b</li>\n<li><a href="hypermedia-pipeline/link.md">link</a></li>\n</ul>`).window.document;
 
-    assert.deepEqual(output, [
-      '\n',
-      '<ul>\n<li>a</li>\n<li>b</li>\n<li><a href=\"https://pipeline.project-helix.io/link.html\">link</a></li>\n</ul>'
-    ]);
+    const after =
+      new JSDOM(`<ul>\n<li>a</li>\n<li>b</li>\n<li><a href=\"https://pipeline.project-helix.io/link.html\">link</a></li>\n</ul>`).window.document;
+
+    rewriteLinks(before, false, '/current/path/index.md', loggerMock);
+
+    assert.equal(before.body.innerHTML, after.body.innerHTML);
   });
+
+
 });

@@ -139,42 +139,6 @@ function extractLastModifiedFromCommitsHistory(commits, logger) {
 function computeNavPath(isDev, logger) {
   logger.debug('html-pre.js - Fetching the nav');
 
-  /*
-  // fetch the whole tree...
-  const options = {
-    uri: `${apiRoot}` +
-      'repos/' +
-      `${owner}` +
-      '/' +
-      `${repo}` +
-      '/git/trees/' +
-      `${ref}` +
-      '?recursive=1',
-    headers: {
-      'User-Agent': 'Request-Promise',
-    },
-    json: true,
-  };
-
-  logger.debug(`html-pre.js - Fetching... ${options.uri}`);
-  const json = await request(options);
-
-  // ...to find the "closest" SUMMARY.md
-  let currentFolderPath = path.substring(0, path.lastIndexOf('/'));
-
-  let summaryPath;
-  while (!summaryPath && currentFolderPath.length > 0) {
-    json.tree.forEach(function (item) {
-      if ('/' + item.path == currentFolderPath + '/SUMMARY.md') {
-        summaryPath = '/' + item.path;
-      }
-    });
-    currentFolderPath = currentFolderPath.substring(0, currentFolderPath.lastIndexOf('/'));
-  }
-
-  summaryPath = summaryPath ? summaryPath.replace('.md', '') : '';
-  */
-
   if (!isDev) {
     const summaryPath = 'https://www.project-helix.io/SUMMARY';
     logger.debug(`html-pre.js - Production path to SUMMARY.md to generate nav: ${summaryPath}`);

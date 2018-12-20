@@ -73,7 +73,7 @@ describe('project-helix.io renders properly', function suite() {
         await assertHttp(`http://localhost:3000${logoURL}`, 200);
     });
 
-    it('static asset in index.html check', async () => {
+    it('content assets in index.html check', async () => {
         let html = (await assertHttp('http://localhost:3000/index.html', 200)).toLowerCase();
 
         // check if one asset can be downloaded

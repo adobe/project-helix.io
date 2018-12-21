@@ -37,7 +37,7 @@ strains:
     code: /acapt/default/https---github-com-adobe-project-helix-io-git--master--
     url: https://client.project-helix.io
     content:
-      repo: project-helix.io
+      repo: helix-cli
       ref: master
       owner: adobe
     static:
@@ -49,7 +49,7 @@ strains:
     code: /acapt/default/https---github-com-adobe-project-helix-io-git--master--
     url: https://pipeline.project-helix.io
     content:
-      repo: hypermedia-pipeline
+      repo: helix-pipeline
       ref: master
       owner: adobe
     static:

@@ -7,14 +7,14 @@ Thank you for your interest in contributing to Project Helix. As an Open Develop
 A lot of the code of Project Helix and many of the most exciting areas for contributions are already Open Source, so some of the more interesting areas for contributions are:
 
 1. [HTL Engine](https://github.com/adobe/htlengine)
-2. [HelpX on Helix](https://github.com/adobe/helix-helpx)
-3. [helix-simulator](https://github.com/adobe/helix-simulator)
-4. [OpenWhisk Loggly Wrapper](https://github.com/adobe/openwhisk-loggly-wrapper)
-5. [HTL/Sightly Plugin for Parcel](https://github.com/adobe/parcel-plugin-htl)
-6. [Hypermedia Pipeline](https://github.com/adobe/hypermedia-pipeline)
-7. [Helix CLI](https://github.com/adobe/helix-cli)
-8. [git-server](https://github.com/adobe/git-server)
-9. [Parcel Plugin JST](https://github.com/adobe/parcel-plugin-jst)
+1. [Helix Pipeline](https://github.com/adobe/helix-pipeline)
+1. [Helix CLI](https://github.com/adobe/helix-cli)
+1. [Helix Simulator](https://github.com/adobe/helix-simulator)
+1. [git-server](https://github.com/adobe/git-server)
+1. [OpenWhisk Loggly Wrapper](https://github.com/adobe/openwhisk-loggly-wrapper)
+1. [HTL/Sightly Plugin for Parcel](https://github.com/adobe/parcel-plugin-htl)
+1. [Parcel Plugin JST](https://github.com/adobe/parcel-plugin-jst)
+1. [HelpX on Helix](https://github.com/adobe/helix-helpx)
 
 There is also a [list of all Project Helix-related repositories on GitHub](https://github.com/search?q=topic%3Ahelix+org%3Aadobe&type=Repositories).
 

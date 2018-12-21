@@ -22,7 +22,7 @@ directoryIndex: index.html
 
 strains:
   default:
-    code: /helix/default/git-github-com-adobe-project-helix-io-git--master--html
+    code: /acapt/default/https---github-com-adobe-project-helix-io-git--master--
     url: https://www.project-helix.io
     content:
       repo: project-helix.io
@@ -30,7 +30,7 @@ strains:
       owner: adobe
 
   client:
-    code: /helix/default/git-github-com-adobe-project-helix-io-git--master--html
+    code: /acapt/default/https---github-com-adobe-project-helix-io-git--master--
     url: https://client.project-helix.io
     content:
       repo: helix-cli
@@ -38,7 +38,7 @@ strains:
       owner: adobe
 
   pipeline:
-    code: /helix/default/git-github-com-adobe-project-helix-io-git--master--html
+    code: /acapt/default/https---github-com-adobe-project-helix-io-git--master--
     url: https://pipeline.project-helix.io
     content:
       repo: hypermedia-pipeline

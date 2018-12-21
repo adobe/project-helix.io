@@ -28,12 +28,20 @@ strains:
       repo: project-helix.io
       ref: master
       owner: adobe
+    static:
+      repo: project-helix.io
+      ref: master
+      owner: adobe
 
   client:
     code: /acapt/default/https---github-com-adobe-project-helix-io-git--master--
     url: https://client.project-helix.io
     content:
-      repo: helix-cli
+      repo: project-helix.io
+      ref: master
+      owner: adobe
+    static:
+      repo: project-helix.io
       ref: master
       owner: adobe
 
@@ -42,5 +50,9 @@ strains:
     url: https://pipeline.project-helix.io
     content:
       repo: hypermedia-pipeline
+      ref: master
+      owner: adobe
+    static:
+      repo: project-helix.io
       ref: master
       owner: adobe

@@ -11,7 +11,7 @@ version: 1
 
 definitions:
   defaults:
-    - &defaultRepo https://github.com/adobe/project-helix.io.git#new-config
+    - &defaultRepo https://github.com/adobe/project-helix.io.git
   strains:
     base:
       &basestrain

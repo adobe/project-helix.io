@@ -7,52 +7,29 @@
 # the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
 # OF ANY KIND, either express or implied. See the License for the specific language
 # governing permissions and limitations under the License.
+version: 1
 
-# defines the default content repository
-content: https://github.com/adobe/project-helix.io.git
-
-# defines the default code (and static) repository
-code: https://github.com/adobe/project-helix.io.git
-
-# defines the default static root relative to the code repository
-staticRoot: /webroot
-
-# defines the directory index file
-directoryIndex: index.html
+definitions:
+  defaults:
+    - &defaultRepo https://github.com/adobe/project-helix.io.git#new-config
+  strains:
+    base:
+      &basestrain
+      code: *defaultRepo
+      content: *defaultRepo
+      static: *defaultRepo
 
 strains:
   default:
-    code: /acapt/default/https---github-com-adobe-project-helix-io-git--master--
-    url: https://www.project-helix.io
-    content:
-      repo: project-helix.io
-      ref: master
-      owner: adobe
-    static:
-      repo: project-helix.io
-      ref: master
-      owner: adobe
+    <<: *basestrain
+    url: https://www.project-helix.io/
 
   client:
-    code: /acapt/default/https---github-com-adobe-project-helix-io-git--master--
-    url: https://client.project-helix.io
-    content:
-      repo: helix-cli
-      ref: master
-      owner: adobe
-    static:
-      repo: project-helix.io
-      ref: master
-      owner: adobe
+    <<: *basestrain
+    url: https://client.project-helix.io/
+    content: https://github.com/adobe/helix-cli.git
 
   pipeline:
-    code: /acapt/default/https---github-com-adobe-project-helix-io-git--master--
-    url: https://pipeline.project-helix.io
-    content:
-      repo: helix-pipeline
-      ref: master
-      owner: adobe
-    static:
-      repo: project-helix.io
-      ref: master
-      owner: adobe
+    <<: *basestrain
+    url: https://pipeline.project-helix.io/
+    content: https://github.com/adobe/helix-pipeline.git

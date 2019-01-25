@@ -6,3 +6,7 @@ logs
 env.inf
 .env
 test-results.xml
+/.blackbox/pubring.gpg~
+/.blackbox/pubring.kbx~
+/.blackbox/secring.gpg
+/secrets/helix.env

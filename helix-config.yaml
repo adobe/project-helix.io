@@ -23,13 +23,16 @@ strains:
   default:
     <<: *basestrain
     url: https://www.project-helix.io/
+    package: 4919bb2e2bd3d835460c0d26562aa93ea6f17ed2
 
   client:
     <<: *basestrain
     url: https://client.project-helix.io/
     content: https://github.com/adobe/helix-cli.git
+    package: 4919bb2e2bd3d835460c0d26562aa93ea6f17ed2
 
   pipeline:
     <<: *basestrain
     url: https://pipeline.project-helix.io/
     content: https://github.com/adobe/helix-pipeline.git
+    package: 4919bb2e2bd3d835460c0d26562aa93ea6f17ed2

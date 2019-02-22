@@ -69,7 +69,7 @@ Refresh the browser and see the result.
 
 #### 6. Edit style sheet
 
-In the IDE, navigate to `src/style.css` in the left pane and double-click to open it. Change e.g. the background color and save the changes.
+In the IDE, navigate to `htdocs/style.css` in the left pane and double-click to open it. Change e.g. the background color and save the changes.
 
 ![Edit CSS](assets/edit-css.png)
 

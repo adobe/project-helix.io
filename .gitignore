@@ -10,3 +10,4 @@ test-results.xml
 /.blackbox/pubring.kbx~
 /.blackbox/secring.gpg
 /secrets/helix.env
+.DS_Store

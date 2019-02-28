@@ -9,7 +9,10 @@
   },
   "scripts": {
     "test": "mocha --exit test/**/*",
-    "smoke": "mocha --exit test/smoke/*"
+    "smoke": "mocha --exit test/smoke/*",
+    "test:snap": "mocha --exit test/snapshot/*",
+    "test:snap-deploy": "env HLX_REQUEST_URL= mocha --exit test/snapshot/*",
+    "test:snap-live": "mocha --exit test/snapshot/*"
   },
   "repository": {
     "type": "git",
@@ -27,9 +30,12 @@
     "request-promise-native": "^1.0.5"
   },
   "devDependencies": {
+    "expect-mocha-snapshot": "git+https://github.com/kptdobe/expect-mocha-snapshot.git#align-with-jest-latest",
+    "js-beautify": "^1.8.9",
     "mocha": "^5.2.0",
     "mocha-junit-reporter": "^1.18.0",
     "nock": "^10.0.1",
+    "request-promise-native": "^1.0.7",
     "shelljs": "^0.8.2"
   }
 }

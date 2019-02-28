@@ -1,0 +1,187 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`index.html should have correct html 1`] = `
+"<!--
+/*
+* Copyright 2018 Adobe. All rights reserved.
+* This file is licensed to you under the Apache License, Version 2.0 (the \\"License\\");
+* you may not use this file except in compliance with the License. You may obtain a copy
+* of the License at http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software distributed under
+* the License is distributed on an \\"AS IS\\" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+* OF ANY KIND, either express or implied. See the License for the specific language
+* governing permissions and limitations under the License.
+*/
+-->
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1.0, user-scalable=no\\" />
+    <link rel=\\"icon\\" href=\\"/favicon.ico\\" />
+    <link rel=\\"stylesheet\\" href=\\"/styles.css\\" />
+    <link rel=\\"stylesheet\\" href=\\"https://fonts.googleapis.com/css?family=Roboto:400,500,700\\" />
+    <script src=\\"https://momentjs.com/downloads/moment.min.js\\"></script>
+    <title>Welcome to Project Helix</title>
+  </head>
+
+  <body>
+    <div class=\\"header\\">
+      <div class=\\"title\\">
+        <h1>
+          <span class=\\"menu-icon\\"></span>
+          <img src=\\"/helix_logo.png\\" />
+          Documentation
+        </h1>
+      </div>
+      <div class=\\"search\\">
+        <form action=\\"https://www.google.com/search\\" method=\\"GET\\">
+          <input type=\\"text\\" value=\\"\\" placeholder=\\"Search\\" class=\\"searchinput\\" name=\\"q\\"></input>
+          <input type=\\"hidden\\" value=\\"site:www.project-helix.io\\" name=\\"q\\"></input>
+        </form>
+      </div>
+    </div>
+    <div class=\\"main\\">
+      <div class=\\"nav\\">
+        <!-- include &#x2f;SUMMARY.summary.html-->
+        <!--
+/*
+* Copyright 2018 Adobe. All rights reserved.
+* This file is licensed to you under the Apache License, Version 2.0 (the \\"License\\");
+* you may not use this file except in compliance with the License. You may obtain a copy
+* of the License at http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software distributed under
+* the License is distributed on an \\"AS IS\\" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+* OF ANY KIND, either express or implied. See the License for the specific language
+* governing permissions and limitations under the License.
+*/
+-->
+        <div class=\\"summary\\">
+          <ul>
+            <li><a href=\\"/index.html\\">Home</a></li>
+            <li>Platform Docs<ul>
+                <li><a href=\\"/doc/getting-started/content.html\\">Where is the content ?</a></li>
+                <li><a href=\\"/subdomains/helix-cli/README.html\\">The <code>hlx</code> command line</a></li>
+                <li><a href=\\"/subdomains/hypermedia-pipeline/README.html\\">Anatomy of the Pipeline</a></li>
+                <li><a href=\\"/doc/general/contributing.html\\">How to contribute</a></li>
+              </ul>
+            </li>
+            <li>API Reference (coming soon)</li>
+            <li><a href=\\"https://github.com/search?p=1&amp;q=topic%3Ahelix+org%3Aadobe&amp;type=Repositories\\">Helix Repositories</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class=\\"content\\">
+        <div class=\\"content-body\\">
+          <div class=\\"title\\">
+            <h1>Welcome to Project Helix</h1>
+            <div class=\\"author\\">
+              <img title=\\"Stefan Guggisberg &#x7c; sguggisb&#x40;adobe.com\\" src=\\"https://avatars1.githubusercontent.com/u/1543625?v=4\\"></img><img title=\\"Lars Trieloff &#x7c; lars&#x40;trieloff.net\\" src=\\"https://avatars3.githubusercontent.com/u/39613?v=4\\"></img><img title=\\"Alexandre Capt &#x7c; acapt&#x40;adobe.com\\" src=\\"https://avatars3.githubusercontent.com/u/474200?v=4\\"></img><img title=\\"David Nuescheler &#x7c; david&#x40;nuescheler.ch\\" src=\\"https://avatars0.githubusercontent.com/u/5289336?v=4\\"></img>
+              <span class=\\"lastModified\\">Last modified <time datetime=\\"2019-02-22T17&#x3a;26&#x3a;13Z\\">Fri Feb 22 2019 18:26:13 GMT+0100 (CET)</time></span>
+            </div>
+          </div>
+          <div>
+            <p>Helix is the new experience management service to create, manage, and deliver great digital experiences.</p>
+            <p>Better than a long story, just try it!</p>
+            <h2>Start Developing Your First Helix Project in 60 Seconds</h2>
+            <h3>Pre-Requisites</h3>
+            <ol>
+              <li><a href=\\"https://git-scm.com/\\">Git</a> should be <a href=\\"https://git-scm.com/book/en/v2/Getting-Started-Installing-Git\\">installed</a> and <a href=\\"https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup\\">setup</a> on your machine.</li>
+              <li>For the sake of this short walkthrough we assume you are using <a href=\\"https://code.visualstudio.com\\">Visual Studio Code</a>, our IDE of choice. However, any other JavaScript IDE would do as well.</li>
+            </ol>
+            <h3>Let’s Get Started</h3>
+            <h4>1. Install <code>hlx</code>, the Helix Command Line Tool</h4>
+            <pre><code class=\\"language-bash\\">curl -sL https://www.project-helix.io/cli.sh | sh
+</code></pre>
+            <h4>2. Create Your First Helix Project</h4>
+            <pre><code class=\\"language-bash\\"># our new project will be called 'hello_helix'
+hlx demo hello_helix
+</code></pre>
+            <h4>3. Open the project in Visual Studio Code</h4>
+            <pre><code class=\\"language-bash\\">cd hello_helix
+code .
+</code></pre>
+            <h4>4. Launch the Local Helix Development Environment</h4>
+            <pre><code class=\\"language-bash\\">hlx up
+</code></pre>
+            <p>A browser window opens, rendering the project’s generated web page.</p>
+            <p><img src=\\"assets/browser.png\\" alt=\\"Rendered web page\\" srcset=\\"assets/browser.png?width=480&amp;auto=webp 480w,assets/browser.png?width=1384&amp;auto=webp 1384w,assets/browser.png?width=2288&amp;auto=webp 2288w,assets/browser.png?width=3192&amp;auto=webp 3192w,assets/browser.png?width=4096&amp;auto=webp 4096w\\" sizes=\\"100vw\\"></p>
+            <h4>5. Edit some content</h4>
+            <p>In the IDE, navigate to <code>index.md</code> in the left pane and double-click to open it. Edit the document and save the changes.</p>
+            <p><img src=\\"assets/edit-content.png\\" alt=\\"Edit content\\" srcset=\\"assets/edit-content.png?width=480&amp;auto=webp 480w,assets/edit-content.png?width=1384&amp;auto=webp 1384w,assets/edit-content.png?width=2288&amp;auto=webp 2288w,assets/edit-content.png?width=3192&amp;auto=webp 3192w,assets/edit-content.png?width=4096&amp;auto=webp 4096w\\" sizes=\\"100vw\\"></p>
+            <p>Refresh the browser and see the result.</p>
+            <p><img src=\\"assets/browser-edited.png\\" alt=\\"Edited web page\\" srcset=\\"assets/browser-edited.png?width=480&amp;auto=webp 480w,assets/browser-edited.png?width=1384&amp;auto=webp 1384w,assets/browser-edited.png?width=2288&amp;auto=webp 2288w,assets/browser-edited.png?width=3192&amp;auto=webp 3192w,assets/browser-edited.png?width=4096&amp;auto=webp 4096w\\" sizes=\\"100vw\\"></p>
+            <h4>6. Edit style sheet</h4>
+            <p>In the IDE, navigate to <code>htdocs/style.css</code> in the left pane and double-click to open it. Change e.g. the background color and save the changes.</p>
+            <p><img src=\\"assets/edit-css.png\\" alt=\\"Edit CSS\\" srcset=\\"assets/edit-css.png?width=480&amp;auto=webp 480w,assets/edit-css.png?width=1384&amp;auto=webp 1384w,assets/edit-css.png?width=2288&amp;auto=webp 2288w,assets/edit-css.png?width=3192&amp;auto=webp 3192w,assets/edit-css.png?width=4096&amp;auto=webp 4096w\\" sizes=\\"100vw\\"></p>
+            <p>Refresh the browser and see the result.</p>
+            <h4>7. Start Debugging</h4>
+            <h5>Set a Breakpoint in your JavaScript code</h5>
+            <p>In the IDE, navigate to <code>src/html.pre.js</code> in the left pane and double-click to open it. Set a breakpoint in the body of the <code>pre</code> function, switch to the Debug view and click on the green arrow in the toolbar.</p>
+            <p><img src=\\"assets/open-js.png\\" alt=\\"Open .js file\\" srcset=\\"assets/open-js.png?width=480&amp;auto=webp 480w,assets/open-js.png?width=1384&amp;auto=webp 1384w,assets/open-js.png?width=2288&amp;auto=webp 2288w,assets/open-js.png?width=3192&amp;auto=webp 3192w,assets/open-js.png?width=4096&amp;auto=webp 4096w\\" sizes=\\"100vw\\"></p>
+            <h5>Trigger the Breakpoint</h5>
+            <p>Refresh the Browser, the Debugger will pause at the breakpoint. Take a look at the <code>payload</code> object in the Variables pane.</p>
+            <p><img src=\\"assets/js-breakpoint.png\\" alt=\\"Halted at breakpoint in JavaScript code\\" srcset=\\"assets/js-breakpoint.png?width=480&amp;auto=webp 480w,assets/js-breakpoint.png?width=1384&amp;auto=webp 1384w,assets/js-breakpoint.png?width=2288&amp;auto=webp 2288w,assets/js-breakpoint.png?width=3192&amp;auto=webp 3192w,assets/js-breakpoint.png?width=4096&amp;auto=webp 4096w\\" sizes=\\"100vw\\"></p>
+            <p>Click <strong>Continue (F5)</strong> to resume execution. Try changing the code, save the changes and see the results in the browser.</p>
+            <h4>8. Now Debug your HTL</h4>
+            <p>In the IDE, navigate to <code>src/html.htl</code> in the left pane and double-click to open it. Set a breakpoint on a line containing a <code>\${...}</code> variable reference. Refresh the Browser, the Debugger will pause at the breakpoint.</p>
+            <p><img src=\\"assets/htl-breakpoint.png\\" alt=\\"Halted at breakpoint in HTL template\\" srcset=\\"assets/htl-breakpoint.png?width=480&amp;auto=webp 480w,assets/htl-breakpoint.png?width=1384&amp;auto=webp 1384w,assets/htl-breakpoint.png?width=2288&amp;auto=webp 2288w,assets/htl-breakpoint.png?width=3192&amp;auto=webp 3192w,assets/htl-breakpoint.png?width=4096&amp;auto=webp 4096w\\" sizes=\\"100vw\\"></p>
+            <p>Congratulations! You’ve just got your hands dirty on your first Helix Project!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      window.addEventListener('load', () => {
+        const parent = document.getElementsByClassName('lastModified')[0];
+
+        const elem = parent.children[0];
+        const lastMod = elem.getAttribute('datetime');
+        elem.innerHTML = moment(lastMod).fromNow();
+        parent.className += ' visible';
+
+        document.querySelectorAll('ul li ul').forEach(function(elem) {
+          elem.parentElement.addEventListener('click', function() {
+            if (!elem.classList.contains('opened')) {
+              elem.classList.add('opened');
+            } else {
+              elem.classList.remove('opened');
+            }
+          });
+        });
+
+        document.querySelectorAll('ul li a').forEach(function(elem) {
+          if (elem.href == window.location.href) {
+            let ul = elem.parentElement.parentElement;
+            const sibling = ul.querySelector('ul');
+            if (sibling) {
+              ul = sibling;
+            }
+            ul.classList.add('opened');
+          }
+
+          elem.parentElement.addEventListener('click', function(ev) {
+            ev.stopPropagation();
+          });
+        });
+
+        document.querySelector('.menu-icon').addEventListener('click', function(ev) {
+          const nav = document.querySelector('.nav');
+          const content = document.querySelector('.content');
+          if (!nav.classList.contains('opened')) {
+            nav.classList.add('opened');
+            content.classList.add('closed');
+          } else {
+            nav.classList.remove('opened');
+            content.classList.remove('closed');
+          }
+        });
+
+      });
+    </script>
+  </body>
+
+</html>"
+`;

@@ -29,8 +29,8 @@ describe('Testing pre requirements for main function', () => {
 
 describe('Testing removeFirstTitle', () => {
   it('Empty document', () => {
-    const before = new JSDOM(``).window.document;
-    const after = new JSDOM(``).window.document;
+    const before = new JSDOM('').window.document;
+    const after = new JSDOM('').window.document;
     defaultPre.removeFirstTitle(before, loggerMock);
     assert.equal(before.body.innerHTML, after.body.innerHTML);
   });
@@ -61,8 +61,7 @@ describe('Testing fetchCommitsHistory', () => {
     };
     nock('http://localhost').get('/repos/owner/repo/commits?path=resourcePath.md&sha=ref').reply(200, expectedCommits);
 
-    const metadata =
-      await defaultPre.fetchCommitsHistory('http://localhost/', 'owner', 'repo', 'ref', 'resourcePath.md', loggerMock);
+    const metadata = await defaultPre.fetchCommitsHistory('http://localhost/', 'owner', 'repo', 'ref', 'resourcePath.md', loggerMock);
 
     assert.deepEqual(metadata, expectedCommits);
   });

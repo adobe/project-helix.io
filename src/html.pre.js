@@ -21,7 +21,7 @@ function removeFirstTitle(document, logger) {
   logger.debug('html-pre.js - Removing first title');
   const heading = document.querySelector('h1, h2, h3, h4, h5, h6');
   if (heading) {
-    logger.debug('Removing ' + heading);
+    logger.debug(`Removing ${heading}`);
     heading.remove();
   }
 }
@@ -49,15 +49,15 @@ async function fetchCommitsHistory(apiRoot, owner, repo, ref, path, logger) {
   logger.debug('html-pre.js - Fetching the commits history');
 
   const options = {
-    uri: `${apiRoot}` +
-      'repos/' +
-      `${owner}` +
-      '/' +
-      `${repo}` +
-      '/commits?path=' +
-      `${path}` +
-      '&sha=' +
-      `${ref}`,
+    uri: `${apiRoot}`
+      + 'repos/'
+      + `${owner}`
+      + '/'
+      + `${repo}`
+      + '/commits?path='
+      + `${path}`
+      + '&sha='
+      + `${ref}`,
     headers: {
       'User-Agent': 'Request-Promise',
     },
@@ -80,9 +80,9 @@ function extractCommittersFromCommitsHistory(commits, logger) {
     const committers = [];
 
     commits.forEach((entry) => {
-      if (entry.author &&
-        entry.commit.author &&
-        committers.map(item => item.avatar_url).indexOf(entry.author.avatar_url) < 0) {
+      if (entry.author
+        && entry.commit.author
+        && committers.map(item => item.avatar_url).indexOf(entry.author.avatar_url) < 0) {
         committers.push({
           avatar_url: entry.author.avatar_url,
           display: `${entry.commit.author.name} | ${entry.commit.author.email}`,
@@ -107,9 +107,9 @@ function extractLastModifiedFromCommitsHistory(commits, logger) {
   logger.debug('html-pre.js - Extracting last modified from metadata');
 
   if (commits) {
-    const lastMod = commits.length > 0 &&
-      commits[0].commit &&
-      commits[0].commit.author ? commits[0].commit.author.date : null;
+    const lastMod = commits.length > 0
+      && commits[0].commit
+      && commits[0].commit.author ? commits[0].commit.author.date : null;
 
     const display = new Date(lastMod);
 
@@ -151,11 +151,10 @@ async function pre(payload, action) {
   const {
     logger,
     secrets,
-    request: actionReq
+    request: actionReq,
   } = action;
 
   try {
-    console.log('Never do this at home' + action.secrets.FAKE_SECRET);
     if (!payload.content) {
       logger.debug('html-pre.js - Payload has no resource, nothing we can do');
       return payload;
@@ -164,22 +163,21 @@ async function pre(payload, action) {
     const p = payload;
 
     // clean up the resource
-    const document = payload.content.document;
+    const { document } = payload.content;
     removeFirstTitle(document, logger);
     // this should get flagged by LGTM
-    p.content.children =  fixTheLinks(p.content.children, logger);
+    p.content.children = fixTheLinks(p.content.children, logger);
 
     // extract committers info and last modified based on commits history
     if (secrets.REPO_API_ROOT) {
-      p.content.commits =
-        await fetchCommitsHistory(
-          secrets.REPO_API_ROOT,
-          actionReq.params.owner,
-          actionReq.params.repo,
-          actionReq.params.ref,
-          actionReq.params.path,
-          logger,
-        );
+      p.content.commits = await fetchCommitsHistory(
+        secrets.REPO_API_ROOT,
+        actionReq.params.owner,
+        actionReq.params.repo,
+        actionReq.params.ref,
+        actionReq.params.path,
+        logger,
+      );
       p.content.committers = extractCommittersFromCommitsHistory(p.content.commits, logger);
       p.content.lastModified = extractLastModifiedFromCommitsHistory(p.content.commits, logger);
     } else {
@@ -188,10 +186,9 @@ async function pre(payload, action) {
 
     // fetch and inject the nav
     if (secrets.REPO_RAW_ROOT) {
-      p.content.nav =
-        computeNavPath(
-          logger,
-        );
+      p.content.nav = computeNavPath(
+        logger,
+      );
     } else {
       logger.debug('html-pre.js - No REPO_RAW_ROOT provided');
     }

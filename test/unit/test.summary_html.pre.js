@@ -12,7 +12,7 @@
 /* global describe, it */
 const assert = require('assert');
 const { JSDOM } = require('jsdom');
-const {pre, removeHeading, rewriteLinks } = require('../../src/summary_html.pre.js');
+const { pre, removeHeading, rewriteLinks } = require('../../src/summary_html.pre.js');
 
 const { loggerMock } = require('./utils');
 
@@ -33,9 +33,7 @@ describe('Testing removeHeading', () => {
       <p>Not a heading</p>
     </div>`).window.document;
 
-    console.log(before);
-
-    const after = new JSDOM(`<div>\n      \n      <p>Not a heading</p>\n    </div>`).window.document;
+    const after = new JSDOM('<div>\n      \n      <p>Not a heading</p>\n    </div>').window.document;
     removeHeading(before, loggerMock);
     assert.equal(before.body.innerHTML, after.body.innerHTML);
   });
@@ -43,11 +41,9 @@ describe('Testing removeHeading', () => {
 
 describe('Testing rewriteLinks', () => {
   it('rewriteLinks() - basic', () => {
-    const before = 
-      new JSDOM(`<ul>\n<li>a</li>\n<li>b</li>\n<li><a href="link.md">link</a></li>\n</ul>`).window.document;
+    const before = new JSDOM('<ul>\n<li>a</li>\n<li>b</li>\n<li><a href="link.md">link</a></li>\n</ul>').window.document;
 
-    const after =
-      new JSDOM(`<ul>\n<li>a</li>\n<li>b</li>\n<li><a href=\"/current/path/link.html\">link</a></li>\n</ul>`).window.document;
+    const after = new JSDOM('<ul>\n<li>a</li>\n<li>b</li>\n<li><a href="/current/path/link.html">link</a></li>\n</ul>').window.document;
 
     rewriteLinks(before, '/current/path/index.md', loggerMock);
 
@@ -55,11 +51,9 @@ describe('Testing rewriteLinks', () => {
   });
 
   it('rewriteLinks() - client', () => {
-    const before = 
-      new JSDOM(`<ul>\n<li>a</li>\n<li>b</li>\n<li><a href="/client/link.md">link</a></li>\n</ul>`).window.document;
+    const before = new JSDOM('<ul>\n<li>a</li>\n<li>b</li>\n<li><a href="/client/link.md">link</a></li>\n</ul>').window.document;
 
-    const after =
-      new JSDOM(`<ul>\n<li>a</li>\n<li>b</li>\n<li><a href=\"/current/path/client/link.html\">link</a></li>\n</ul>`).window.document;
+    const after = new JSDOM('<ul>\n<li>a</li>\n<li>b</li>\n<li><a href="/current/path/client/link.html">link</a></li>\n</ul>').window.document;
 
     rewriteLinks(before, '/current/path/index.md', loggerMock);
 
@@ -67,16 +61,12 @@ describe('Testing rewriteLinks', () => {
   });
 
   it('rewriteLinks() - pipeline', () => {
-    const before = 
-      new JSDOM(`<ul>\n<li>a</li>\n<li>b</li>\n<li><a href="/pipeline/link.md">link</a></li>\n</ul>`).window.document;
+    const before = new JSDOM('<ul>\n<li>a</li>\n<li>b</li>\n<li><a href="/pipeline/link.md">link</a></li>\n</ul>').window.document;
 
-    const after =
-      new JSDOM(`<ul>\n<li>a</li>\n<li>b</li>\n<li><a href=\"/pipeline/link.html\">link</a></li>\n</ul>`).window.document;
+    const after = new JSDOM('<ul>\n<li>a</li>\n<li>b</li>\n<li><a href="/pipeline/link.html">link</a></li>\n</ul>').window.document;
 
     rewriteLinks(before, '/index.md', loggerMock);
 
     assert.equal(before.body.innerHTML, after.body.innerHTML);
   });
-
-
 });

@@ -150,3 +150,41 @@ describe('Testing computeNavPath', () => {
     assert.deepEqual(output, '/SUMMARY');
   });
 });
+
+describe('Testing fixTheLinks', () => {
+  it('md links are changed to html', () => {
+    const before = new JSDOM('<a href="index.md">index</a>').window.document;
+    const after = new JSDOM('<a href="index.html">index</a>').window.document;
+
+    defaultPre.fixTheLinks(
+      before,
+      loggerMock,
+    );
+
+    assert.equal(before.body.innerHTML, after.body.innerHTML);
+  });
+
+  it('.md in the link are NOT changed', () => {
+    const before = new JSDOM('<a href="http://wwww.mdast.com/">mdast</a>').window.document;
+    const after = new JSDOM('<a href="http://wwww.mdast.com/">mdast</a>').window.document;
+
+    defaultPre.fixTheLinks(
+      before,
+      loggerMock,
+    );
+
+    assert.equal(before.body.innerHTML, after.body.innerHTML);
+  });
+
+  it('.html in the link are NOT changed', () => {
+    const before = new JSDOM('<a href="index.html">index</a>').window.document;
+    const after = new JSDOM('<a href="index.html">index</a>').window.document;
+
+    defaultPre.fixTheLinks(
+      before,
+      loggerMock,
+    );
+
+    assert.equal(before.body.innerHTML, after.body.innerHTML);
+  });
+});

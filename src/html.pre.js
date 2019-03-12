@@ -26,14 +26,12 @@ function removeFirstTitle(document, logger) {
   }
 }
 
-function fixTheLinks(children, logger) {
+function fixTheLinks(doc, logger) {
   logger.debug('html-pre.js - Fixing the links (md to html)');
-  let ret = children;
-  if (ret && ret.length > 0) {
-    ret = ret.map(element => element
-      .replace(new RegExp('.md"', 'g'), '.html"'));
-  }
-  return ret;
+  doc.querySelectorAll('a').forEach((a) => {
+    // eslint-disable-next-line no-param-reassign
+    a.href = a.href.replace(new RegExp('.md$', 'g'), '.html');
+  });
 }
 
 /**
@@ -165,8 +163,8 @@ async function pre(payload, action) {
     // clean up the resource
     const { document } = payload.content;
     removeFirstTitle(document, logger);
-    // this should get flagged by LGTM
-    p.content.children = fixTheLinks(p.content.children, logger);
+
+    fixTheLinks(p.content.document, logger);
 
     // extract committers info and last modified based on commits history
     if (secrets.REPO_API_ROOT) {
@@ -210,3 +208,4 @@ module.exports.fetchCommitsHistory = fetchCommitsHistory;
 module.exports.extractCommittersFromCommitsHistory = extractCommittersFromCommitsHistory;
 module.exports.extractLastModifiedFromCommitsHistory = extractLastModifiedFromCommitsHistory;
 module.exports.computeNavPath = computeNavPath;
+module.exports.fixTheLinks = fixTheLinks;

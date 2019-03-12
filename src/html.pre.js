@@ -188,9 +188,6 @@ async function pre(payload, action) {
 
     // fetch and inject the nav
     if (secrets.REPO_RAW_ROOT) {
-      // TODO find a better way or implement one
-      const isDev = action.request.headers.host ? action.request.headers.host.indexOf('localhost') != -1 : false;
-
       p.content.nav =
         computeNavPath(
           logger,

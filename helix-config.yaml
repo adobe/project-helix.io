@@ -12,7 +12,7 @@ version: 1
 definitions:
   defaults:
     - &defaultRepo https://github.com/adobe/project-helix.io.git#master
-    - &devRepo http://localhost/local/default.git#get-rid-of-submodules
+    - &devRepo http://localhost/local/default.git
   strains:
     base:
       &basestrain

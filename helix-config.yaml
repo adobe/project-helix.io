@@ -12,27 +12,47 @@ version: 1
 definitions:
   defaults:
     - &defaultRepo https://github.com/adobe/project-helix.io.git#master
+    - &devRepo http://localhost/local/default.git#get-rid-of-submodules
   strains:
     base:
       &basestrain
       code: *defaultRepo
       content: *defaultRepo
       static: *defaultRepo
+    dev:
+      &devstrain
+      code: *devRepo
+      content: *devRepo
+      static: *devRepo
 
 strains:
-  default:
-    <<: *basestrain
-    url: https://www.project-helix.io/
-    package: 4919bb2e2bd3d835460c0d26562aa93ea6f17ed2
-
   client:
     <<: *basestrain
-    url: https://client.project-helix.io/
+    url: https://www.project-helix.io/client
     content: https://github.com/adobe/helix-cli.git
     package: 4919bb2e2bd3d835460c0d26562aa93ea6f17ed2
 
   pipeline:
     <<: *basestrain
-    url: https://pipeline.project-helix.io/
+    url: https://www.project-helix.io/pipeline
     content: https://github.com/adobe/helix-pipeline.git
     package: 4919bb2e2bd3d835460c0d26562aa93ea6f17ed2
+
+  default:
+    <<: *basestrain
+    url: https://www.project-helix.io/
+    package: 4919bb2e2bd3d835460c0d26562aa93ea6f17ed2
+
+  clientDev:
+    <<: *devstrain
+    url: http://localhost:3000/client
+    content: https://github.com/adobe/helix-cli.git
+
+  pipelineDev:
+    <<: *devstrain
+    url: http://localhost:3000/pipeline
+    content: https://github.com/adobe/helix-pipeline.git
+
+  defaultDev:
+    <<: *devstrain
+    url: http://localhost:3000

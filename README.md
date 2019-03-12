@@ -2,7 +2,7 @@
 
 Project Helix documentation site based on… Helix!
 
-Check [www.project-helix.io](http://www.project-helix.io/index.html)... coming soon!
+Check [www.project-helix.io](http://www.project-helix.io/index.html).
 
 ## Installation
 
@@ -10,7 +10,13 @@ Clone current repo and simply run `hlx up`.
 
 If you want to see content from remote repository, run `git submodule init`
 
-## Deploy
+If you want to locally emulate the behaviors on the public host (especially when working with navigation links, multiple content repos with one code repo...), use:
+
+```bash
+hlx up --host www.project-helix.io
+```
+
+## Deployment and publication
 
 ### Setup
 
@@ -27,12 +33,12 @@ HLX_FASTLY_AUTH=...
 
 If the `secrets/helix.env` is missing, you need to decrypt the first.
 We're using [blackbox](https://github.com/StackExchange/blackbox) to encrypt the secrets. Follow
-the installation instructions if needed. 
+the installation instructions if needed.
 
 Then run:
 
 ```bash
-$ blackbox_decrypt_all_files
+blackbox_decrypt_all_files
 ```
 
 ### Deploy

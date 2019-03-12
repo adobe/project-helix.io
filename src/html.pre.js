@@ -136,14 +136,8 @@ function extractLastModifiedFromCommitsHistory(commits, logger) {
  * @param String ref Ref
  * @param {Object} logger Logger
  */
-function computeNavPath(isDev, logger) {
+function computeNavPath(logger) {
   logger.debug('html-pre.js - Fetching the nav');
-
-  if (!isDev) {
-    const summaryPath = 'https://www.project-helix.io/SUMMARY';
-    logger.debug(`html-pre.js - Production path to SUMMARY.md to generate nav: ${summaryPath}`);
-    return summaryPath;
-  }
 
   const summaryPath = '/SUMMARY';
   logger.debug(`html-pre.js - Development path to SUMMARY.md to generate nav: ${summaryPath}`);
@@ -199,7 +193,6 @@ async function pre(payload, action) {
 
       p.content.nav =
         computeNavPath(
-          isDev,
           logger,
         );
     } else {

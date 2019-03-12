@@ -1,6 +1,0 @@
-[submodule "subdomains/helix-pipeline"]
-	path = subdomains/helix-pipeline
-	url = https://github.com/adobe/helix-pipeline.git
-[submodule "subdomains/helix-cli"]
-	path = subdomains/helix-cli
-	url = https://github.com/adobe/helix-cli.git

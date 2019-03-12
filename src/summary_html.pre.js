@@ -10,20 +10,6 @@
  * governing permissions and limitations under the License.
  */
 
-const DOMAINS = [{
-    'name': 'project-helix.io/',
-    'dev': '',
-    'prod': 'https://www.project-helix.io/'
-},{
-    'name': 'hypermedia-pipeline',
-    'dev': 'subdomains/hypermedia-pipeline',
-    'prod': 'https://pipeline.project-helix.io'
-},{
-    'name': 'helix-cli',
-    'dev': 'subdomains/helix-cli',
-    'prod': 'https://client.project-helix.io'
-}];
-
 function removeHeading(document, logger) {
     const h1 = Array.from(document.getElementsByTagName('h1'));
     logger.debug('Found h1: ' + h1.length);
@@ -33,21 +19,9 @@ function removeHeading(document, logger) {
     });
 }
 
-function rewriteLinks(document, isDev, currentFolderPath, logger) {
+function rewriteLinks(document, currentFolderPath, logger) {
     const links = Array.from(document.getElementsByTagName('a'));
     logger.debug('Found links: ' + links.length);
-
-    // build a list of rewriting rules from the mapping defined in DOMAINS
-    const rewrites = DOMAINS.map(mapping => {
-        return function(url) {
-            return url.replace(new RegExp(mapping.name, 'g'), isDev ? mapping.dev : mapping.prod);
-        }
-    });
-
-    // go over each rewriting function and apply it to the passed URL
-    function rewrite(url) {
-        return rewrites.reduce((rurl, rewriter) => rewriter(rurl), url);
-    }
 
     function md2html(url) {
         // pipeline does this only for relative links, but we do it for all links
@@ -57,14 +31,13 @@ function rewriteLinks(document, isDev, currentFolderPath, logger) {
     // do some stuff with the current folder path, at least for non-absolute URLs
     function path(url) {
         if (!/^https?:\/\//.test(url)) {
-            return currentFolderPath.substring(0, currentFolderPath.lastIndexOf('/')) + '/' + url
+            return currentFolderPath.substring(0, currentFolderPath.lastIndexOf('/')) + (url.charAt(0) === '/' ? '' : '/') + url;
         }
         return url;
     }
 
     links.forEach(e => {
         logger.debug('rewriting ' + e.href);
-        e.href = rewrite(e.href);
         e.href = path(e.href);
         e.href = md2html(e.href);
     });
@@ -79,14 +52,10 @@ async function pre(payload, action) {
     } = action;
 
     if (payload.content.document) {
-        const isDev = action.request.headers.host ? action.request.headers.host.indexOf('localhost') != -1 : false;
-
-        logger.debug('Working with DOM, development: ', isDev);
         const document = payload.content.document;
 
         removeHeading(document, logger);
-        rewriteLinks(document, isDev, action.request.params.path, logger);
-        
+        rewriteLinks(document, action.request.params.path, logger);
 
         return payload;
     } else {

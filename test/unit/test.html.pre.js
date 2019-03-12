@@ -137,7 +137,6 @@ describe('Testing extractLastModifiedFromCommitsHistory', () => {
 describe('Testing computeNavPath', () => {
   it('Compute dev nav path', () => {
     const output = defaultPre.computeNavPath(
-      true,
       loggerMock,
     );
 
@@ -146,10 +145,9 @@ describe('Testing computeNavPath', () => {
 
   it('Compute prod nav path', () => {
     const output = defaultPre.computeNavPath(
-      false,
       loggerMock,
     );
 
-    assert.deepEqual(output, 'https://www.project-helix.io/SUMMARY');
+    assert.deepEqual(output, '/SUMMARY');
   });
 });

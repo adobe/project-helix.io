@@ -14,11 +14,11 @@
 
 # Table of content
 
-* [Home](project-helix.io/index.md)
+* [Home](/index.md)
 * Platform Docs
-  * [Where is the content ?](project-helix.io/doc/getting-started/content.md)
-  * [The `hlx` command line](helix-cli/README.md)
-  * [Anatomy of the Pipeline](hypermedia-pipeline/README.md)
-  * [How to contribute](project-helix.io/doc/general/contributing.md)
+  * [Where is the content ?](/doc/getting-started/content.md)
+  * [The `hlx` command line](/client/README.md)
+  * [Anatomy of the Pipeline](/pipeline/README.md)
+  * [How to contribute](/doc/general/contributing.md)
 * API Reference (coming soon)
 * [Helix Repositories](https://github.com/search?p=1&q=topic%3Ahelix+org%3Aadobe&type=Repositories)

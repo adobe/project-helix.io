@@ -35,7 +35,7 @@ If the `secrets/helix.env` is missing, you need to decrypt the first.
 We're using [blackbox](https://github.com/StackExchange/blackbox) to encrypt the secrets. Follow
 the installation instructions if needed.
 
-Then run:
+Once you added yourself as an admin and committed the changes, one of the other admin will need to re-encrypted the files. Check the list of admins in [.blackbox/blackbox-admins.txt](.blackbox/blackbox-admins.txt) and contact them. Then you will be able to run:
 
 ```bash
 blackbox_decrypt_all_files

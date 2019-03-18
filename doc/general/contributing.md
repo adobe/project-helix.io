@@ -26,7 +26,7 @@ For each of the Open Source projects, refer to the project's `contributing.md`. 
 2. Open Pull Requests for code changes
 3. Make sure your code is tested and covered by CircleCI
 
-A good start point is to check the issue tagged with ["good first issue"](https://github.com/search?q=is:open+repo:%22adobe/project-helix%22+repo:%22adobe/htlengine%22+repo:%22adobe/helix-cli%22+repo:%22adobe/git-server%22+repo:%22adobe/petridish%22+repo:%22adobe/parcel-plugin-htl%22+repo:%22adobe/helix-helpx%22+repo:%22adobe/parcel-plugin-jst%22+repo:%22adobe/openwhisk-loggly-wrapper%22+repo:%22adobe/helix-dockerimage%22+repo:%22adobe/parcel-plugin-jst%22+repo:%22adobe/hypermedia-pipeline%22+label%3A%22good+first+issue%22&type=Issues).
+A good start point is to check the issue tagged with ["good first issue"](https://github.com/search?q=is:open+label%3A%22good+first+issue%22+repo:%22adobe/git-server%22+repo:%22adobe/project-helix%22+repo:%22adobe/htlengine%22+repo:%22adobe/helix-cli%22+repo:%22adobe/project-helix.io%22+repo:%22adobe/helix-pipeline%22+repo:%22adobe/parcel-plugin-htl%22+repo:%22adobe/helix-helpx%22+repo:%22adobe/helix-simulator%22+repo:%22adobe/parcel-plugin-jst%22+repo:%22adobe/openwhisk-action-builder%22+repo:%22adobe/helix-publish%22+repo:%22adobe/helix-dockerimage%22+repo:%22adobe/helix-shared%22+repo:%22adobe/helix-testutils%22+repo:%22adobe/helix-embed%22+repo:%22adobe/probot-serverless-openwhisk%22+repo:%22adobe/helix-continuous%22+repo:%22adobe/vscode-helix%22+repo:%22adobe/openwhisk-loggly-wrapper%22&type=Issues).
 
 ## How to communicate with Project Helix
 

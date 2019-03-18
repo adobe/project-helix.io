@@ -30,18 +30,18 @@ strains:
     <<: *basestrain
     url: https://www.project-helix.io/client
     content: https://github.com/adobe/helix-cli.git
-    package: helix/0db41cd6ea4fea683c2f8cb8cea2ba09e52eee5c
+    package: 4919bb2e2bd3d835460c0d26562aa93ea6f17ed2
 
   pipeline:
     <<: *basestrain
     url: https://www.project-helix.io/pipeline
     content: https://github.com/adobe/helix-pipeline.git
-    package: helix/0db41cd6ea4fea683c2f8cb8cea2ba09e52eee5c
+    package: 4919bb2e2bd3d835460c0d26562aa93ea6f17ed2
 
   default:
     <<: *basestrain
     url: https://www.project-helix.io/
-    package: helix/0db41cd6ea4fea683c2f8cb8cea2ba09e52eee5c
+    package: 4919bb2e2bd3d835460c0d26562aa93ea6f17ed2
 
   clientDev:
     <<: *devstrain

@@ -24,13 +24,22 @@ Better than a long story, just try it!
 
 1. [Git](https://git-scm.com/) should be [installed](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [setup](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup) on your machine.
 2. For the sake of this short walkthrough we assume you are using [Visual Studio Code](https://code.visualstudio.com), our IDE of choice. However, any other JavaScript IDE would do as well.
+3. We're assuming that you are running on `macOS`. If you're on `Linux` or `Windows` YMMV.
 
 ### Let's Get Started
 
 #### 1. Install `hlx`, the Helix Command Line Tool
 
+macOS:
+
 ```bash
 curl -sL https://www.project-helix.io/cli.sh | sh
+```
+
+Windows or Linux:
+
+```bash
+npm i -g @adobe/helix-cli
 ```
 
 #### 2. Create Your First Helix Project

@@ -16,11 +16,12 @@
 
 * [Home](/index.md)
 * Platform Docs
-  * [Where is the content ?](/doc/getting-started/content.md)
+  * [Where is the content?](/doc/getting-started/content.md)
   * [The `hlx` command line](/client/README.md)
   * [Anatomy of the Pipeline](/pipeline/README.md)
   * [Caching in Helix](/doc/general/shared-caching.md)
   * [Troubleshooting & Debugging](/doc/general/troubleshooting.md)
   * [How to contribute](/doc/general/contributing.md)
-* API Reference (coming soon)
+* API Reference
+  * [Helix Pipeline](/pipeline/docs/README.md)
 * [Helix Repositories](https://github.com/search?p=1&q=topic%3Ahelix+org%3Aadobe&type=Repositories)

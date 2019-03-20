@@ -37,6 +37,12 @@ strains:
     url: https://www.project-helix.io/pipeline
     content: https://github.com/adobe/helix-pipeline.git
     package: helix/0db41cd6ea4fea683c2f8cb8cea2ba09e52eee5c
+    
+  shared:
+    <<: *basestrain
+    url: https://www.project-helix.io/shared
+    content: https://github.com/adobe/helix-shared.git
+    package: helix/0db41cd6ea4fea683c2f8cb8cea2ba09e52eee5c
 
   default:
     <<: *basestrain
@@ -52,6 +58,11 @@ strains:
     <<: *devstrain
     url: http://localhost:3000/pipeline
     content: https://github.com/adobe/helix-pipeline.git
+ 
+  sharedDev:
+    <<: *devstrain
+    url: http://localhost:3000/shared
+    content: https://github.com/adobe/helix-shared.git
 
   defaultDev:
     <<: *devstrain

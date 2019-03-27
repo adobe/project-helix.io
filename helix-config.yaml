@@ -3,171 +3,112 @@ strains:
   - code:
       protocol: https
       host: github.com
-      port: ""
       hostname: github.com
       owner: adobe
       repo: project-helix.io
-      ref: master
-      path: ""
+      ref: test-map-strains
     content:
       protocol: https
       host: github.com
-      port: ""
       hostname: github.com
       owner: adobe
       repo: helix-cli
-      ref: ""
-      path: ""
     static:
-      magic: false
-      allow: []
-      deny: []
       protocol: https
       host: github.com
-      port: ""
       hostname: github.com
       owner: adobe
       repo: project-helix.io
-      ref: master
+      ref: test-map-strains
       path: /htdocs
     directoryIndex: index.html
-    package: acapt/e0cf9a737a7819cf835efc3777cc4b826fce54a5
+    package: acapt/github-com--adobe--project-helix-io--test-map-strains-dirty
     name: client
-    sticky: false
-    condition: ""
-    perf:
-      device: ""
-      location: ""
-      connection: ""
     urls:
-      - https://www.project-helix.io/client
-    url: https://www.project-helix.io/client
+      - https://alex.helix-demo.xyz/client
+    url: https://alex.helix-demo.xyz/client
   - code:
       protocol: https
       host: github.com
-      port: ""
       hostname: github.com
       owner: adobe
       repo: project-helix.io
-      ref: master
-      path: ""
+      ref: test-map-strains
     content:
       protocol: https
       host: github.com
-      port: ""
       hostname: github.com
       owner: adobe
       repo: helix-pipeline
-      ref: ""
-      path: ""
     static:
-      magic: false
-      allow: []
-      deny: []
       protocol: https
       host: github.com
-      port: ""
       hostname: github.com
       owner: adobe
       repo: project-helix.io
-      ref: master
+      ref: test-map-strains
       path: /htdocs
     directoryIndex: index.html
-    package: acapt/e0cf9a737a7819cf835efc3777cc4b826fce54a5
+    package: acapt/github-com--adobe--project-helix-io--test-map-strains-dirty
     name: pipeline
-    sticky: false
-    condition: ""
-    perf:
-      device: ""
-      location: ""
-      connection: ""
     urls:
-      - https://www.project-helix.io/pipeline
-    url: https://www.project-helix.io/pipeline
+      - https://alex.helix-demo.xyz/pipeline
+    url: https://alex.helix-demo.xyz/pipeline
   - code:
       protocol: https
       host: github.com
-      port: ""
       hostname: github.com
       owner: adobe
       repo: project-helix.io
-      ref: master
-      path: ""
+      ref: test-map-strains
     content:
       protocol: https
       host: github.com
-      port: ""
       hostname: github.com
       owner: adobe
       repo: helix-shared
-      ref: ""
-      path: ""
     static:
-      magic: false
-      allow: []
-      deny: []
       protocol: https
       host: github.com
-      port: ""
       hostname: github.com
       owner: adobe
       repo: project-helix.io
-      ref: master
+      ref: test-map-strains
       path: /htdocs
     directoryIndex: index.html
-    package: acapt/e0cf9a737a7819cf835efc3777cc4b826fce54a5
+    package: acapt/github-com--adobe--project-helix-io--test-map-strains-dirty
     name: shared
-    sticky: false
-    condition: ""
-    perf:
-      device: ""
-      location: ""
-      connection: ""
     urls:
-      - https://www.project-helix.io/shared
-    url: https://www.project-helix.io/shared
+      - https://alex.helix-demo.xyz/shared
+    url: https://alex.helix-demo.xyz/shared
   - code:
       protocol: https
       host: github.com
-      port: ""
       hostname: github.com
       owner: adobe
       repo: project-helix.io
-      ref: master
-      path: ""
+      ref: test-map-strains
     content:
       protocol: https
       host: github.com
-      port: ""
       hostname: github.com
       owner: adobe
       repo: project-helix.io
-      ref: master
-      path: ""
+      ref: test-map-strains
     static:
-      magic: false
-      allow: []
-      deny: []
       protocol: https
       host: github.com
-      port: ""
       hostname: github.com
       owner: adobe
       repo: project-helix.io
-      ref: master
+      ref: test-map-strains
       path: /htdocs
     directoryIndex: index.html
-    package: acapt/e0cf9a737a7819cf835efc3777cc4b826fce54a5
+    package: acapt/github-com--adobe--project-helix-io--test-map-strains-dirty
     name: default
-    sticky: false
-    condition: ""
-    perf:
-      device: ""
-      location: ""
-      connection: ""
     urls:
-      - https://www.project-helix.io/
-    url: https://www.project-helix.io/
+      - https://alex.helix-demo.xyz/
+    url: https://alex.helix-demo.xyz/
   - code:
       protocol: http
       host: localhost

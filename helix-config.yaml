@@ -1,69 +1,338 @@
-# Copyright 2018 Adobe. All rights reserved.
-# This file is licensed to you under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License. You may obtain a copy
-# of the License at http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software distributed under
-# the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
-# OF ANY KIND, either express or implied. See the License for the specific language
-# governing permissions and limitations under the License.
 version: 1
-
-definitions:
-  defaults:
-    - &defaultRepo https://github.com/adobe/project-helix.io.git#master
-    - &devRepo http://localhost/local/default.git
-  strains:
-    base:
-      &basestrain
-      code: *defaultRepo
-      content: *defaultRepo
-      static: *defaultRepo
-    dev:
-      &devstrain
-      code: *devRepo
-      content: *devRepo
-      static: *devRepo
-
 strains:
-  client:
-    <<: *basestrain
+  - code:
+      protocol: https
+      host: github.com
+      port: ""
+      hostname: github.com
+      owner: adobe
+      repo: project-helix.io
+      ref: master
+      path: ""
+    content:
+      protocol: https
+      host: github.com
+      port: ""
+      hostname: github.com
+      owner: adobe
+      repo: helix-cli
+      ref: ""
+      path: ""
+    static:
+      magic: false
+      allow: []
+      deny: []
+      protocol: https
+      host: github.com
+      port: ""
+      hostname: github.com
+      owner: adobe
+      repo: project-helix.io
+      ref: master
+      path: /htdocs
+    directoryIndex: index.html
+    package: acapt/e0cf9a737a7819cf835efc3777cc4b826fce54a5
+    name: client
+    sticky: false
+    condition: ""
+    perf:
+      device: ""
+      location: ""
+      connection: ""
+    urls:
+      - https://www.project-helix.io/client
     url: https://www.project-helix.io/client
-    content: https://github.com/adobe/helix-cli.git
-    package: helix/0db41cd6ea4fea683c2f8cb8cea2ba09e52eee5c
-
-  pipeline:
-    <<: *basestrain
+  - code:
+      protocol: https
+      host: github.com
+      port: ""
+      hostname: github.com
+      owner: adobe
+      repo: project-helix.io
+      ref: master
+      path: ""
+    content:
+      protocol: https
+      host: github.com
+      port: ""
+      hostname: github.com
+      owner: adobe
+      repo: helix-pipeline
+      ref: ""
+      path: ""
+    static:
+      magic: false
+      allow: []
+      deny: []
+      protocol: https
+      host: github.com
+      port: ""
+      hostname: github.com
+      owner: adobe
+      repo: project-helix.io
+      ref: master
+      path: /htdocs
+    directoryIndex: index.html
+    package: acapt/e0cf9a737a7819cf835efc3777cc4b826fce54a5
+    name: pipeline
+    sticky: false
+    condition: ""
+    perf:
+      device: ""
+      location: ""
+      connection: ""
+    urls:
+      - https://www.project-helix.io/pipeline
     url: https://www.project-helix.io/pipeline
-    content: https://github.com/adobe/helix-pipeline.git
-    package: helix/0db41cd6ea4fea683c2f8cb8cea2ba09e52eee5c
-    
-  shared:
-    <<: *basestrain
+  - code:
+      protocol: https
+      host: github.com
+      port: ""
+      hostname: github.com
+      owner: adobe
+      repo: project-helix.io
+      ref: master
+      path: ""
+    content:
+      protocol: https
+      host: github.com
+      port: ""
+      hostname: github.com
+      owner: adobe
+      repo: helix-shared
+      ref: ""
+      path: ""
+    static:
+      magic: false
+      allow: []
+      deny: []
+      protocol: https
+      host: github.com
+      port: ""
+      hostname: github.com
+      owner: adobe
+      repo: project-helix.io
+      ref: master
+      path: /htdocs
+    directoryIndex: index.html
+    package: acapt/e0cf9a737a7819cf835efc3777cc4b826fce54a5
+    name: shared
+    sticky: false
+    condition: ""
+    perf:
+      device: ""
+      location: ""
+      connection: ""
+    urls:
+      - https://www.project-helix.io/shared
     url: https://www.project-helix.io/shared
-    content: https://github.com/adobe/helix-shared.git
-    package: helix/0db41cd6ea4fea683c2f8cb8cea2ba09e52eee5c
-
-  default:
-    <<: *basestrain
+  - code:
+      protocol: https
+      host: github.com
+      port: ""
+      hostname: github.com
+      owner: adobe
+      repo: project-helix.io
+      ref: master
+      path: ""
+    content:
+      protocol: https
+      host: github.com
+      port: ""
+      hostname: github.com
+      owner: adobe
+      repo: project-helix.io
+      ref: master
+      path: ""
+    static:
+      magic: false
+      allow: []
+      deny: []
+      protocol: https
+      host: github.com
+      port: ""
+      hostname: github.com
+      owner: adobe
+      repo: project-helix.io
+      ref: master
+      path: /htdocs
+    directoryIndex: index.html
+    package: acapt/e0cf9a737a7819cf835efc3777cc4b826fce54a5
+    name: default
+    sticky: false
+    condition: ""
+    perf:
+      device: ""
+      location: ""
+      connection: ""
+    urls:
+      - https://www.project-helix.io/
     url: https://www.project-helix.io/
-    package: helix/0db41cd6ea4fea683c2f8cb8cea2ba09e52eee5c
-
-  clientDev:
-    <<: *devstrain
+  - code:
+      protocol: http
+      host: localhost
+      port: ""
+      hostname: localhost
+      owner: local
+      repo: default
+      ref: ""
+      path: ""
+    content:
+      protocol: https
+      host: github.com
+      port: ""
+      hostname: github.com
+      owner: adobe
+      repo: helix-cli
+      ref: ""
+      path: ""
+    static:
+      magic: false
+      allow: []
+      deny: []
+      protocol: http
+      host: localhost
+      port: ""
+      hostname: localhost
+      owner: local
+      repo: default
+      ref: ""
+      path: /htdocs
+    directoryIndex: index.html
+    package: ""
+    name: clientDev
+    sticky: false
+    condition: ""
+    perf:
+      device: ""
+      location: ""
+      connection: ""
+    urls:
+      - http://localhost:3000/client
     url: http://localhost:3000/client
-    content: https://github.com/adobe/helix-cli.git
-
-  pipelineDev:
-    <<: *devstrain
+  - code:
+      protocol: http
+      host: localhost
+      port: ""
+      hostname: localhost
+      owner: local
+      repo: default
+      ref: ""
+      path: ""
+    content:
+      protocol: https
+      host: github.com
+      port: ""
+      hostname: github.com
+      owner: adobe
+      repo: helix-pipeline
+      ref: ""
+      path: ""
+    static:
+      magic: false
+      allow: []
+      deny: []
+      protocol: http
+      host: localhost
+      port: ""
+      hostname: localhost
+      owner: local
+      repo: default
+      ref: ""
+      path: /htdocs
+    directoryIndex: index.html
+    package: ""
+    name: pipelineDev
+    sticky: false
+    condition: ""
+    perf:
+      device: ""
+      location: ""
+      connection: ""
+    urls:
+      - http://localhost:3000/pipeline
     url: http://localhost:3000/pipeline
-    content: https://github.com/adobe/helix-pipeline.git
- 
-  sharedDev:
-    <<: *devstrain
+  - code:
+      protocol: http
+      host: localhost
+      port: ""
+      hostname: localhost
+      owner: local
+      repo: default
+      ref: ""
+      path: ""
+    content:
+      protocol: https
+      host: github.com
+      port: ""
+      hostname: github.com
+      owner: adobe
+      repo: helix-shared
+      ref: ""
+      path: ""
+    static:
+      magic: false
+      allow: []
+      deny: []
+      protocol: http
+      host: localhost
+      port: ""
+      hostname: localhost
+      owner: local
+      repo: default
+      ref: ""
+      path: /htdocs
+    directoryIndex: index.html
+    package: ""
+    name: sharedDev
+    sticky: false
+    condition: ""
+    perf:
+      device: ""
+      location: ""
+      connection: ""
+    urls:
+      - http://localhost:3000/shared
     url: http://localhost:3000/shared
-    content: https://github.com/adobe/helix-shared.git
-
-  defaultDev:
-    <<: *devstrain
-    url: http://localhost:3000
+  - code:
+      protocol: http
+      host: localhost
+      port: ""
+      hostname: localhost
+      owner: local
+      repo: default
+      ref: ""
+      path: ""
+    content:
+      protocol: http
+      host: localhost
+      port: ""
+      hostname: localhost
+      owner: local
+      repo: default
+      ref: ""
+      path: ""
+    static:
+      magic: false
+      allow: []
+      deny: []
+      protocol: http
+      host: localhost
+      port: ""
+      hostname: localhost
+      owner: local
+      repo: default
+      ref: ""
+      path: /htdocs
+    directoryIndex: index.html
+    package: ""
+    name: defaultDev
+    sticky: false
+    condition: ""
+    perf:
+      device: ""
+      location: ""
+      connection: ""
+    urls:
+      - http://localhost:3000/
+    url: http://localhost:3000/

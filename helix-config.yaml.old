@@ -11,7 +11,7 @@ version: 1
 
 definitions:
   defaults:
-    - &defaultRepo https://github.com/adobe/project-helix.io.git#master
+    - &defaultRepo https://github.com/adobe/project-helix.io.git#test-sequence-strains
     - &devRepo http://localhost/local/default.git
   strains:
     base:
@@ -26,33 +26,44 @@ definitions:
       static: *devRepo
 
 strains:
-  client:
+  - name: client
     <<: *basestrain
     url: https://www.project-helix.io/client
     content: https://github.com/adobe/helix-cli.git
-    package: 4919bb2e2bd3d835460c0d26562aa93ea6f17ed2
+    package: helix/0db41cd6ea4fea683c2f8cb8cea2ba09e52eee5c
 
-  pipeline:
+  - name: pipeline
     <<: *basestrain
     url: https://www.project-helix.io/pipeline
     content: https://github.com/adobe/helix-pipeline.git
-    package: 4919bb2e2bd3d835460c0d26562aa93ea6f17ed2
+    package: helix/0db41cd6ea4fea683c2f8cb8cea2ba09e52eee5c
+    
+  - name: shared
+    <<: *basestrain
+    url: https://www.project-helix.io/shared
+    content: https://github.com/adobe/helix-shared.git
+    package: helix/0db41cd6ea4fea683c2f8cb8cea2ba09e52eee5c
 
-  default:
+  - name: default
     <<: *basestrain
     url: https://www.project-helix.io/
-    package: 4919bb2e2bd3d835460c0d26562aa93ea6f17ed2
+    package: helix/0db41cd6ea4fea683c2f8cb8cea2ba09e52eee5c
 
-  clientDev:
+  - name: clientDev
     <<: *devstrain
     url: http://localhost:3000/client
     content: https://github.com/adobe/helix-cli.git
 
-  pipelineDev:
+  - name: pipelineDev
     <<: *devstrain
     url: http://localhost:3000/pipeline
     content: https://github.com/adobe/helix-pipeline.git
+ 
+  - name: sharedDev
+    <<: *devstrain
+    url: http://localhost:3000/shared
+    content: https://github.com/adobe/helix-shared.git
 
-  defaultDev:
+  - name: defaultDev
     <<: *devstrain
     url: http://localhost:3000

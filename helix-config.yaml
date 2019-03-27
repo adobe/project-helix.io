@@ -28,25 +28,25 @@ definitions:
 strains:
   - name: client
     <<: *basestrain
-    url: https://www.project-helix.io/client
+    url: https://alex.helix-demo.xyz/client
     content: https://github.com/adobe/helix-cli.git
     package: acapt/e179ce0ba371833c8fb3aff82f1e031bea20e2f4
 
   - name: pipeline
     <<: *basestrain
-    url: https://www.project-helix.io/pipeline
+    url: https://alex.helix-demo.xyz/pipeline
     content: https://github.com/adobe/helix-pipeline.git
     package: acapt/e179ce0ba371833c8fb3aff82f1e031bea20e2f4
 
   - name: shared
     <<: *basestrain
-    url: https://www.project-helix.io/shared
+    url: https://alex.helix-demo.xyz/shared
     content: https://github.com/adobe/helix-shared.git
     package: acapt/e179ce0ba371833c8fb3aff82f1e031bea20e2f4
 
   - name: default
     <<: *basestrain
-    url: https://www.project-helix.io/
+    url: https://alex.helix-demo.xyz/
     package: acapt/e179ce0ba371833c8fb3aff82f1e031bea20e2f4
 
   - name: clientDev

@@ -8,7 +8,7 @@ Start `hlx up --log-level debug` to increase the log level. Other possible value
 
 ### Check the Payload in the Browser
 
-While running `hlx up`, you can add `?debug=true` to any URL to see the current content of the `context` pipeline payload in your browser's dev tools. It is useful when writing HTL to remember the exact object structure of all properties that are available in the `context`.
+While running `hlx up`, you can add `?debug=true` to any URL to see the current content of the `context` pipeline payload in your browser's JavaScript Console. It is useful when writing HTL to remember the exact object structure of all properties that are available in the `context`.
 
 ### Check in Pipeline Payload
 

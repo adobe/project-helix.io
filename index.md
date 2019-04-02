@@ -30,14 +30,6 @@ Better than a long story, just try it!
 
 #### 1. Install `hlx`, the Helix Command Line Tool
 
-macOS:
-
-```bash
-curl -sL https://www.project-helix.io/cli.sh | sh
-```
-
-Windows or Linux:
-
 ```bash
 npm i -g @adobe/helix-cli
 ```

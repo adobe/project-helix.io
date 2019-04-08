@@ -211,5 +211,5 @@ curl -v "<action url>?owner=adobe&repo=project-helix.io&ref=master&path=/index.m
 
 #### Some related links
 
-* [Adobe I/O Runtime Developer Guide](https://git.corp.adobe.com/rstewart/runtime-documentation/blob/master/README.md)
+* [Adobe I/O Runtime Developer Guide](https://github.com/AdobeDocs/adobeio-runtime/tree/master)
 * [Debugging Node.js OpenWhisk Actions](https://medium.com/openwhisk/debugging-node-js-openwhisk-actions-3da3303e6741)

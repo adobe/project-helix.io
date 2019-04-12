@@ -26,4 +26,4 @@
   * [Helix Pipeline](https://github.com/adobe/helix-pipeline/tree/master/docs)
   * [`helix-config.yaml`](https://github.com/adobe/helix-shared/tree/master/docs)
 * [Helix Repositories](https://github.com/search?p=1&q=topic%3Ahelix+org%3Aadobe&type=Repositories)
-* [Service Status](https://status.project-helix.io)
+* [Service Status](https://status.project-helix.io/)

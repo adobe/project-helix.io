@@ -20,7 +20,7 @@ const HLX_SMOKE_EXEC = process.env.HLX_SMOKE_EXEC || 'hlx';
 console.debug(`Running smoke test using: ${HLX_SMOKE_EXEC}`);
 
 describe('project-helix.io renders properly', function suite() {
-  this.timeout(10000);
+  this.timeout(20000);
 
   let hlxup;
 
@@ -34,13 +34,13 @@ describe('project-helix.io renders properly', function suite() {
     });
 
     // wait for server to properly start and hlx build to be completed
-    await sleep(5000);
+    await sleep(10000);
   });
 
   after(async () => {
     hlxup.kill();
     hlxup = null;
-    await sleep(1000);
+    await sleep(2000);
   });
 
   it('Root ("/" / index.html) is rendered using project htl scripts', async () => {

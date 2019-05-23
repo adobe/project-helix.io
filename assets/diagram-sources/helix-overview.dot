@@ -1,0 +1,62 @@
+// This is a graphviz diagram, convert to png using
+// dot -Tpng helix-overview.dot > ../helix-overview.png
+
+strict digraph helix {
+
+  node [ 
+    shape=component, 
+    color="#999999"
+    fontname="helvetica"
+  ];
+
+  graph [ 
+    rankdir="TB", 
+    label=<Helix Architecture, <FONT COLOR="blue">Request Flow</FONT> and <FONT COLOR="sienna">Deployment</FONT> Overview>,
+    labelloc=b,
+    style="dashed",
+    color="grey",
+    fontcolor="#666666",
+    fontname="arial italic",
+    labeljust=r
+  ]
+  
+  browser [ label = "Web Browser", shape="rect" ];
+  
+  // need to use cluster_ prefix to see the enclosing box
+  subgraph cluster_fastly {
+    graph [ label = "Fastly CDN", labelloc=t, labeljust=l ]
+    vcl [ label = "VCL Edge Code" ];
+    cache [ label = "Global Cache" ];
+  }
+   
+  subgraph cluster_ioruntime {
+    graph [ label = "Adobe I/O Runtime", labelloc=t ]
+    { rank=same renderingF staticF publishF }
+
+    renderingF [ label = "Rendering Functions" ];
+    staticF [ label = "Static Resources Resolution" ];
+    publishF [ label = "Helix Publish Service" ];
+  }
+   
+  subgraph cluster_github {
+    graph [ label = "GitHub Repository (or Repositories)", labelloc=t, labeljust=c ]
+      { rank=same content static code config }
+      content [ label = "Content Repository", shape="tab" ];
+      static [ label = "Static Files Repository", shape="tab" ];
+      code [ label = "Code Repository", shape="tab" ];
+      config [ label = "Helix Config (strains etc.)", shape="note" ];
+  }
+   
+  browser -> vcl [ color = "blue" ]
+  vcl -> renderingF [ color = "blue" ];
+  renderingF -> content [ color = "blue" ];
+  vcl -> staticF [ color = "blue" ];
+  vcl -> cache [ color = "blue", constraint="false", dir="both" ];
+  staticF -> static [ color = "blue" ];
+  code -> renderingF [ color = "sienna", label ="hlx deploy", fontcolor="sienna" ];
+  config -> publishF [ color = "sienna", label="hlx publish", fontcolor="sienna" ];
+  config -> renderingF [ color = "sienna", label="hlx publish", constraint="false", fontcolor="sienna" ];
+  publishF -> vcl [ color = "sienna", label="hlx publish", fontcolor="sienna" ];
+  
+}
+

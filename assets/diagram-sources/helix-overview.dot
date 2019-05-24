@@ -1,5 +1,7 @@
 // This is a graphviz diagram, convert to png using
 // dot -Tpng helix-overview.dot > ../helix-overview.png
+// See https://www.graphviz.org/ for the "dot" command,
+// on macosx it can be installed with "brew install graphviz"
 
 strict digraph helix {
 

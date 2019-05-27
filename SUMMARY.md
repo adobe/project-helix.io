@@ -12,10 +12,11 @@
 */
 -->
 
-# Table of content
+# Table of contents
 
 * [Home](/index.md)
 * Platform Docs
+  * [How does Helix work?](/doc/getting-started/how-helix-works.md)
   * [Where is the content?](/doc/getting-started/content.md)
   * [The `hlx` command line](/client/README.md)
   * [Anatomy of the Pipeline](/pipeline/README.md)

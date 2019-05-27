@@ -190,6 +190,7 @@ async function pre(payload, action) {
     } else {
       logger.debug('html-pre.js - No REPO_RAW_ROOT provided');
     }
+    return payload;
   } catch (e) {
     logger.error(`Error while executing html.pre.js: ${e.stack || e}`);
     return {

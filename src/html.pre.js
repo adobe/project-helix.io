@@ -145,7 +145,7 @@ function computeNavPath(logger) {
 // module.exports.pre is a function (taking next as an argument)
 // that returns a function (with payload, config, logger as arguments)
 // that calls next (after modifying the payload a bit)
-async function pre(payload, action) {
+async function pre(context, action) {
   const {
     logger,
     secrets,
@@ -153,15 +153,15 @@ async function pre(payload, action) {
   } = action;
 
   try {
-    if (!payload.content) {
+    if (!context.content) {
       logger.debug('html-pre.js - Payload has no resource, nothing we can do');
-      return payload;
+      return;
     }
 
-    const p = payload;
+    const p = context;
 
     // clean up the resource
-    const { document } = payload.content;
+    const { document } = context.content;
     removeFirstTitle(document, logger);
 
     fixTheLinks(p.content.document, logger);
@@ -190,12 +190,9 @@ async function pre(payload, action) {
     } else {
       logger.debug('html-pre.js - No REPO_RAW_ROOT provided');
     }
-    return payload;
   } catch (e) {
     logger.error(`Error while executing html.pre.js: ${e.stack || e}`);
-    return {
-      error: e,
-    };
+    throw e;
   }
 }
 

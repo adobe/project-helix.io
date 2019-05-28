@@ -46,20 +46,19 @@ function rewriteLinks(document, currentFolderPath, logger) {
 // module.exports.pre is a function (taking next as an argument)
 // that returns a function (with payload, config, logger as arguments)
 // that calls next (after modifying the payload a bit)
-async function pre(payload, action) {
+async function pre(context, action) {
   const {
     logger,
   } = action;
 
-  if (payload.content.document) {
-    const { document } = payload.content;
+  if (context.content.document) {
+    const { document } = context.content;
 
     removeHeading(document, logger);
     rewriteLinks(document, action.request.params.path, logger);
   } else {
     logger.error('summary_html.pre.js - could not get a DOM to work with');
   }
-  return payload;
 }
 
 module.exports = { pre, removeHeading, rewriteLinks };

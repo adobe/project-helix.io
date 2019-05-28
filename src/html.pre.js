@@ -14,7 +14,7 @@ const request = require('request-promise-native');
 
 /**
  * Removes the first title from the resource children
- * @param Array children Children
+ * @param {Document} document the virtual document
  * @param {Object} logger Logger
  */
 function removeFirstTitle(document, logger) {
@@ -36,11 +36,11 @@ function fixTheLinks(doc, logger) {
 
 /**
  * Fetches the commits history
- * @param String apiRoot API root url
- * @param String owner Owner
- * @param String repo Repo
- * @param String ref Ref
- * @param String path Path to the resource
+ * @param {String} apiRoot API root url
+ * @param {String} owner Owner
+ * @param {String} repo Repo
+ * @param {String} ref Ref
+ * @param {String} path Path to the resource
  * @param {Object} logger Logger
  */
 async function fetchCommitsHistory(apiRoot, owner, repo, ref, path, logger) {
@@ -69,7 +69,7 @@ async function fetchCommitsHistory(apiRoot, owner, repo, ref, path, logger) {
 /**
  * Extracts some committers data from the list of commits
  * and returns the list of committers
- * @param Array commits Commits
+ * @param {Array} commits Commits
  * @param {Object} logger Logger
  */
 function extractCommittersFromCommitsHistory(commits, logger) {
@@ -98,7 +98,7 @@ function extractCommittersFromCommitsHistory(commits, logger) {
 /**
  * Extracts the last modified date of commits and
  * returns an object containing the date details
- * @param Array commits Commits
+ * @param {Array} commits Commits
  * @param {Object} logger Logger
  */
 function extractLastModifiedFromCommitsHistory(commits, logger) {
@@ -127,11 +127,7 @@ function extractLastModifiedFromCommitsHistory(commits, logger) {
 }
 
 /**
- * Fetches the nav payload
- * @param String rawRoot Raw root url
- * @param String owner Owner
- * @param String repo Repo
- * @param String ref Ref
+ * Computes the nav path
  * @param {Object} logger Logger
  */
 function computeNavPath(logger) {
@@ -142,9 +138,12 @@ function computeNavPath(logger) {
   return summaryPath;
 }
 
-// module.exports.pre is a function (taking next as an argument)
-// that returns a function (with payload, config, logger as arguments)
-// that calls next (after modifying the payload a bit)
+/**
+ * module.exports.pre is a function that can modify the the pipeline context before the script
+ * rendering is invoked.
+ * @param context Pipeline context
+ * @param action  Pipeline action.
+ */
 async function pre(context, action) {
   const {
     logger,

@@ -43,9 +43,12 @@ function rewriteLinks(document, currentFolderPath, logger) {
   });
 }
 
-// module.exports.pre is a function (taking next as an argument)
-// that returns a function (with payload, config, logger as arguments)
-// that calls next (after modifying the payload a bit)
+/**
+ * module.exports.pre is a function that can modify the the pipeline context before
+ * the script rendering is invoked.
+ * @param context Pipeline context
+ * @param action  Pipeline action.
+ */
 async function pre(context, action) {
   const {
     logger,

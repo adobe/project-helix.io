@@ -11,3 +11,4 @@ test-results.xml
 /.blackbox/secring.gpg
 /secrets/helix.env
 .DS_Store
+helix-config.yaml.old

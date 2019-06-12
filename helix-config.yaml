@@ -29,17 +29,17 @@ strains:
   - name: client
     <<: *basestrain
     url: https://www.project-helix.io/client
-    content: https://github.com/adobe/helix-cli.git
+    content: https://github.com/adobe/helix-cli.git#master
 
   - name: pipeline
     <<: *basestrain
     url: https://www.project-helix.io/pipeline
-    content: https://github.com/adobe/helix-pipeline.git
+    content: https://github.com/adobe/helix-pipeline.git#master
 
   - name: shared
     <<: *basestrain
     url: https://www.project-helix.io/shared
-    content: https://github.com/adobe/helix-shared.git
+    content: https://github.com/adobe/helix-shared.git#master
 
   - name: default
     <<: *basestrain

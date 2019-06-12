@@ -20,18 +20,18 @@ hlx up --host www.project-helix.io
 
 ### Setup
 
-Ensure that you have the correct environment variables set in your `secrets/helix.env` script:
+Ensure that you have the correct environment variables set in your `.env` file:
 
 ```bash
-$ source secrets/helix.env
-$ printenv  | fgrep HLX_
-HLX_WSK_NAMESPACE=helix
+$ ln -s secrets/helix.env .env
+$ cat .env
+HLX_WSK_NAMESPACE=helix-pages
 HLX_WSK_AUTH=...
 HLX_FASTLY_NAMESPACE=...
 HLX_FASTLY_AUTH=...
 ```
 
-If the `secrets/helix.env` shell script is missing, you need to decrypt it first. We're using [BlackBox](https://github.com/StackExchange/blackbox) to encrypt sensitive information in the git repository, e.g. the `secrets/helix.env` file containing API tokens, keys etc. If you are new to [BlackBox](https://github.com/StackExchange/blackbox) follow the [Installation instructions](https://github.com/StackExchange/blackbox#installation-instructions) and refer to the [BlackBox Commands](https://github.com/StackExchange/blackbox#commands).
+If the `secrets/helix.env` env file is missing, you need to decrypt it first. We're using [BlackBox](https://github.com/StackExchange/blackbox) to encrypt sensitive information in the git repository, e.g. the `secrets/helix.env` file containing API tokens, keys etc. If you are new to [BlackBox](https://github.com/StackExchange/blackbox) follow the [Installation instructions](https://github.com/StackExchange/blackbox#installation-instructions) and refer to the [BlackBox Commands](https://github.com/StackExchange/blackbox#commands).
 
 Once you've added yourself as an admin via `blackbox_addadmin <email address>` (and committed the changes), one of the existing admins will need to re-encrypt the files. Check the list of admins (`blackbox_list_admins`) and contact one of them. Once the admin re-encrypted the files you will be able to run:
 

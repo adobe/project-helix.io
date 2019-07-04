@@ -11,7 +11,9 @@
     "test": "mocha --exit test/**/*",
     "unit": "mocha --exit test/unit/*",
     "smoke": "mocha --exit test/smoke/*",
-    "lint": "./node_modules/.bin/eslint ."
+    "lint": "./node_modules/.bin/eslint .",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -26,7 +28,8 @@
   "dependencies": {
     "jsdom": "^13.0.0",
     "request": "^2.88.0",
-    "request-promise-native": "^1.0.5"
+    "request-promise-native": "^1.0.5",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "eslint": "5.15.1",
@@ -40,5 +43,6 @@
     "mocha-junit-reporter": "^1.18.0",
     "nock": "^10.0.1",
     "shelljs": "^0.8.2"
-  }
+  },
+  "snyk": true
 }

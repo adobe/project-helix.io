@@ -50,7 +50,7 @@
                     <h1>${content.title}</h1>
                     <div data-sly-test="${content.committers && content.lastModified}" class="author">
                         <sly data-sly-list="${content.committers}"><img title="${item.display}" src="${item.avatar_url}"></sly>
-                        <span class="lastModified">Last modified <time datetime="${content.lastModified.raw}">${content.lastModified.display}</time></span>
+                        <span class="lastModified">Last modified <time>${content.lastModified.raw}</time></span>
                     </div>
                 </div>
                 <div data-sly-test="${content.document}">${content.document.body.innerHTML @ context = 'unsafe'}</div>
@@ -62,7 +62,7 @@
             const parent = document.getElementsByClassName('lastModified')[0];
 
             const elem = parent.children[0];
-            const lastMod = elem.getAttribute('datetime');
+            const lastMod = elem.innerHTML;
             elem.innerHTML = moment(lastMod).fromNow();
             parent.className += ' visible';
 

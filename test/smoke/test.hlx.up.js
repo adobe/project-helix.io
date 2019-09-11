@@ -25,7 +25,7 @@ describe('project-helix.io renders properly', function suite() {
   let hlxup;
 
   before(async () => {
-    hlxup = $.exec(`${HLX_SMOKE_EXEC} up --open false`, {
+    hlxup = $.exec(`${HLX_SMOKE_EXEC} up --no-local-repo --open false`, {
       // silent: true,
       async: true,
     }, (code, stdout) => {

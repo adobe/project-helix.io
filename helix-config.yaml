@@ -12,18 +12,12 @@ version: 1
 definitions:
   defaults:
     - &defaultRepo https://github.com/adobe/project-helix.io.git#master
-    - &devRepo http://localhost/local/default.git
   strains:
     base:
       &basestrain
       code: *defaultRepo
       content: *defaultRepo
       static: *defaultRepo
-    dev:
-      &devstrain
-      code: *devRepo
-      content: *devRepo
-      static: *devRepo
 
 strains:
   - name: client
@@ -48,22 +42,3 @@ strains:
     <<: *basestrain
     url: https://www.project-helix.io/
     package: helix-pages/2c9aa85292686a9113469ad4d1622e976adfe741
-
-  - name: clientDev
-    <<: *devstrain
-    url: http://localhost:3000/client
-    content: https://github.com/adobe/helix-cli.git
-
-  - name: pipelineDev
-    <<: *devstrain
-    url: http://localhost:3000/pipeline
-    content: https://github.com/adobe/helix-pipeline.git
-
-  - name: sharedDev
-    <<: *devstrain
-    url: http://localhost:3000/shared
-    content: https://github.com/adobe/helix-shared.git
-
-  - name: defaultDev
-    <<: *devstrain
-    url: http://localhost:3000

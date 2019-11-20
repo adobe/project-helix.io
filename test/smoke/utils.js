@@ -76,14 +76,17 @@ async function waitForServer(port, timeout) {
         client.connect(port, '127.0.0.1');
       }
     };
-    client.on('error', () => {
+    client.on('error', (e) => {
+      if (e.errno !== 'ECONNREFUSED') {
+        clearTimeout(timer);
+        reject(e);
+      }
       setTimeout(connect, 1000);
     });
     client.on('connect', () => {
       connecting = false;
       clearTimeout(timer);
-      client.write('OPTIONS / HTTP/1.0\n\n');
-      setImmediate(() => {
+      client.write('OPTIONS / HTTP/1.0\n\n', () => {
         client.destroy();
         resolve();
       });

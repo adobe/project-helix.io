@@ -13,6 +13,7 @@ const assert = require('assert');
 const http = require('http');
 const fse = require('fs-extra');
 const path = require('path');
+const net = require('net');
 
 async function assertHttp(url, status, spec, replacements = []) {
   return new Promise((resolve, reject) => {
@@ -59,5 +60,40 @@ async function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-module.exports.assertHttp = assertHttp;
-module.exports.sleep = sleep;
+async function waitForServer(port, timeout) {
+  return new Promise((resolve, reject) => {
+    let connecting = true;
+    const client = new net.Socket();
+    const timer = setTimeout(() => {
+      connecting = false;
+      client.destroy();
+      reject(new Error(`timeout of ${timeout}ms reached while waiting for server on 127.0.0.1:${port}`));
+    }, timeout);
+    const connect = () => {
+      if (connecting) {
+        // eslint-disable-next-line no-console
+        console.log(`waiting for server on 127.0.0.1:${port}`);
+        client.connect(port, '127.0.0.1');
+      }
+    };
+    client.on('error', () => {
+      setTimeout(connect, 1000);
+    });
+    client.on('connect', () => {
+      connecting = false;
+      clearTimeout(timer);
+      client.write('OPTIONS / HTTP/1.0\n\n');
+      setImmediate(() => {
+        client.destroy();
+        resolve();
+      });
+    });
+    connect();
+  });
+}
+
+module.exports = {
+  assertHttp,
+  sleep,
+  waitForServer,
+};

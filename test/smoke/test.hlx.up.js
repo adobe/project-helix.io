@@ -13,7 +13,7 @@
 const assert = require('assert');
 const $ = require('shelljs');
 
-const { assertHttp, sleep } = require('./utils');
+const { assertHttp, sleep, waitForServer } = require('./utils');
 
 const HLX_SMOKE_EXEC = process.env.HLX_SMOKE_EXEC || 'hlx';
 // eslint-disable-next-line no-console
@@ -24,7 +24,8 @@ describe('project-helix.io renders properly', function suite() {
 
   let hlxup;
 
-  before(async () => {
+  before(async function beforeAll() {
+    this.timeout(60000);
     hlxup = $.exec(`${HLX_SMOKE_EXEC} up --no-local-repo --open false`, {
       // silent: true,
       async: true,
@@ -34,7 +35,7 @@ describe('project-helix.io renders properly', function suite() {
     });
 
     // wait for server to properly start and hlx build to be completed
-    await sleep(10000);
+    await waitForServer(3000, 60000);
   });
 
   after(async () => {

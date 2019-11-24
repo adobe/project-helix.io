@@ -88,7 +88,8 @@ async function waitForServer(port, timeout) {
       clearTimeout(timer);
       client.write('OPTIONS / HTTP/1.0\n\n', () => {
         client.destroy();
-        resolve();
+        // wait some extra to ensure server is ready
+        setTimeout(resolve, 500);
       });
     });
     connect();

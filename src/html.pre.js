@@ -80,7 +80,7 @@ function extractCommittersFromCommitsHistory(commits, logger) {
     commits.forEach((entry) => {
       if (entry.author
         && entry.commit.author
-        && committers.map(item => item.avatar_url).indexOf(entry.author.avatar_url) < 0) {
+        && committers.map((item) => item.avatar_url).indexOf(entry.author.avatar_url) < 0) {
         committers.push({
           avatar_url: entry.author.avatar_url,
           display: `${entry.commit.author.name} | ${entry.commit.author.email}`,

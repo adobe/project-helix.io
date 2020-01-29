@@ -41,7 +41,7 @@ jobs:
             command: npm run lint
         - run:
             name: Running Tests
-            command: npx mocha  --exit --reporter mocha-junit-reporter test/**/*
+            command: env HLX_SMOKE_EXEC='node ./node_modules/@adobe/helix-cli/index.js' npx mocha --exit --reporter mocha-junit-reporter test/**/*
             environment:
                 MOCHA_FILE: junit/test-results.xml
             when: always    

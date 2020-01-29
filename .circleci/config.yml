@@ -1,16 +1,22 @@
-version: 2
+version: 2.1
+
+executors:
+  node10:
+    docker:
+      - image: circleci/node:10.18.1-buster
+    environment:
+      NPM_CONFIG_PREFIX: ~/.npm-global
+
 jobs:
   build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/node:8-jessie-browsers-legacy
+    executor: node10
     steps:
         - checkout
 
         # Download and cache dependencies
         - restore_cache:
             keys:
-            - v1-dependencies-{{ checksum "package.json" }}
+            - v2-dependencies-{{ checksum "package.json" }}
 
         - run:
             name: Installing Dependencies
@@ -23,7 +29,7 @@ jobs:
         - save_cache:
             paths:
                 - node_modules
-            key: v1-dependencies-{{ checksum "package.json" }}
+            key: v2-dependencies-{{ checksum "package.json" }}
 
         # run tests!
         - run: mkdir junit
@@ -35,7 +41,7 @@ jobs:
             command: npm run lint
         - run:
             name: Running Tests
-            command: npx mocha  --exit --reporter mocha-junit-reporter test/**/*
+            command: env HLX_SMOKE_EXEC='node ./node_modules/@adobe/helix-cli/index.js' npx mocha --exit --reporter mocha-junit-reporter test/**/*
             environment:
                 MOCHA_FILE: junit/test-results.xml
             when: always    
@@ -46,20 +52,8 @@ jobs:
         - store_artifacts:
             path: junit
 
-        # - run:
-        #    name: Building Templates
-        #    command: npx hlx build
-
-        # - run: git status
-
-        # - run:
-        #    name: Deploying to Adobe I/O Runtime
-        #    command: npx hlx deploy --no-auto
-
-        # - run:
-        #    name: Activate CDN
-        #    command: npx hlx publish
-
-        # - run:
-        #    name: Test Performance
-        #    command: npx hlx perf
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build

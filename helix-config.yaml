@@ -24,21 +24,21 @@ strains:
     <<: *basestrain
     url: https://www.project-helix.io/client
     content: https://github.com/adobe/helix-cli.git#master
-    package: helix-pages/2c9aa85292686a9113469ad4d1622e976adfe741
+    package: helix-pages/c14f43cc8041cbcb248b40095920799b7773c63f
 
   - name: pipeline
     <<: *basestrain
     url: https://www.project-helix.io/pipeline
     content: https://github.com/adobe/helix-pipeline.git#master
-    package: helix-pages/2c9aa85292686a9113469ad4d1622e976adfe741
+    package: helix-pages/c14f43cc8041cbcb248b40095920799b7773c63f
 
   - name: shared
     <<: *basestrain
     url: https://www.project-helix.io/shared
     content: https://github.com/adobe/helix-shared.git#master
-    package: helix-pages/2c9aa85292686a9113469ad4d1622e976adfe741
+    package: helix-pages/c14f43cc8041cbcb248b40095920799b7773c63f
 
   - name: default
     <<: *basestrain
     url: https://www.project-helix.io/
-    package: helix-pages/2c9aa85292686a9113469ad4d1622e976adfe741
+    package: helix-pages/c14f43cc8041cbcb248b40095920799b7773c63f

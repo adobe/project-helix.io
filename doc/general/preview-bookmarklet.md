@@ -11,13 +11,12 @@
 <br>
 
 <div id="book" style="display:none">
-    <p>
-        Drag and Drop the image below to you bookmark bar...
-    </p>
-
-    <a id="bookmark" title="Helix Preview" href="">
-        <img title="Helix Preview" alt="Helix Preview" src="../helix_logo.png" style="height: 32px">
-    </a>
+<p>
+    Drag and Drop the image below to you bookmark bar...
+</p>
+<a id="bookmark" title="Helix Preview" href="">
+  <img title="Helix Preview" alt="Helix Preview" src="/helix_logo.png" style="height: 32px">
+</a>
 </div>
 
 <script>

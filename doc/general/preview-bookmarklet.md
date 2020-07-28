@@ -3,8 +3,8 @@
 <label for="giturl">Repository URL:</label><br>
 <input id="giturl" placeholder="https://github.com/...." size="40"><br>
 <br>
-<label for="prefix">URL prefix (optional): </label><br>
-<input id="prefix"><br>
+<label for="hostname">Fixed Hostname(optional): </label><br>
+<input id="hostname"><br>
 <br>
 <br>
 <button onclick="run()">Generate Bookmarklet</button>
@@ -32,7 +32,7 @@
 
   function run() {
     var giturl = document.getElementById('giturl').value;
-    var pfx = document.getElementById('prefix').value;
+    var hostname = document.getElementById('hostname').value;
     if (!giturl) {
       alert('repository url is mandatory.');
       return;
@@ -48,8 +48,8 @@
     url.searchParams.append('repo', repo);
     url.searchParams.append('ref', ref || 'master');
     url.searchParams.append('path', '/'); // dummy is needed by content proxy
-    if (pfx) {
-      url.searchParams.append('prefix', pfx);
+    if (hostname) {
+      url.searchParams.append('prefix', `https://${hostname}`);
     }
     const code = [
       'javascript:(function(){',

@@ -1,4 +1,4 @@
-<h1>Generate Preview Bookmarklet</h1>
+# Generate Preview Bookmarklet
 
 <label for="giturl">Repository URL:</label><br>
 <input id="giturl" placeholder="https://github.com/...." size="40"><br>

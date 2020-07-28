@@ -1,9 +1,10 @@
-# Generate Bookmarklet
+<h1>Generate Preview Bookmarklet</h1>
 
-<label for="owner">User / Org: </label><input id="owner"><br>
-<label for="repo">Repository: </label><input id="repo"><br>
-<label for="ref">Branch (optional): </label><input id="ref"><br>
-<label for="prefix">URL prefix (optional): </label><input id="prefix"><br>
+<label for="giturl">Repository URL:</label><br>
+<input id="giturl" placeholder="https://github.com/...." size="40"><br>
+<br>
+<label for="prefix">URL prefix (optional): </label><br>
+<input id="prefix"><br>
 <br>
 <br>
 <button onclick="run()">Generate Bookmarklet</button>
@@ -17,18 +18,30 @@
 <a id="bookmark" title="Helix Preview" href="">
   <img title="Helix Preview" alt="Helix Preview" src="/helix_logo.png" style="height: 32px">
 </a>
+<p>
+    ...or <button onclick="copy()">copy</button> the <b>Link Address</b> of the image and add the bookmark manually.
+</p>
+
 </div>
 
 <script>
+  function copy() {
+    var text = document.getElementById('bookmark').href;
+    navigator.clipboard.writeText(text)
+  }
+
   function run() {
-    const owner = document.getElementById('owner').value;
-    const repo = document.getElementById('repo').value;
-    const ref = document.getElementById('ref').value;
-    const pfx = document.getElementById('prefix').value;
-    if (!owner || !repo) {
-      alert('owner and repo are mandatory.');
+    var giturl = document.getElementById('giturl').value;
+    var pfx = document.getElementById('prefix').value;
+    if (!giturl) {
+      alert('repository url is mandatory.');
       return;
     }
+    giturl = new URL(giturl);
+    var segs = giturl.pathname.substring(1).split('/');
+    var owner = segs[0];
+    var repo = segs[1];
+    var ref = segs[3] || 'master';
 
     const url = new URL('https://adobeioruntime.net/api/v1/web/helix/helix-services/content-proxy@1.12.1-lookup-test-tripod');
     url.searchParams.append('owner', owner);

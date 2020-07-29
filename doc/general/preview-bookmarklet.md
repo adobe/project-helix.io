@@ -43,7 +43,7 @@
     var repo = segs[1];
     var ref = segs[3] || 'master';
 
-    const url = new URL('https://adobeioruntime.net/api/v1/web/helix/helix-services/content-proxy@1.12.1-lookup-test-tripod');
+    const url = new URL('https://adobeioruntime.net/api/v1/web/helix/helix-services/content-proxy@v1');
     url.searchParams.append('owner', owner);
     url.searchParams.append('repo', repo);
     url.searchParams.append('ref', ref || 'master');

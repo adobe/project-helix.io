@@ -1,15 +1,18 @@
 # Generate Preview Bookmarklet
 
+<div id="form">
 <label for="giturl">Repository URL:</label><br>
 <input id="giturl" placeholder="https://github.com/...." size="40"><br>
 <br>
-<label for="hostname">Fixed Hostname(optional): </label><br>
-<input id="hostname"><br>
+<label for="prefix">Fixed Hostname(optional): </label><br>
+<input id="prefix"><br>
 <br>
+<input type="hidden" id="title"><br>
 <br>
 <button onclick="run()">Generate Bookmarklet</button>
 <br>
 <br>
+</div>
 
 <div id="book" style="display:none">
 <p>
@@ -32,7 +35,8 @@
 
   function run() {
     var giturl = document.getElementById('giturl').value;
-    var hostname = document.getElementById('hostname').value;
+    var prefix = document.getElementById('prefix').value;
+    var title = document.getElementById('title').value;
     if (!giturl) {
       alert('repository url is mandatory.');
       return;
@@ -48,8 +52,8 @@
     url.searchParams.append('repo', repo);
     url.searchParams.append('ref', ref || 'master');
     url.searchParams.append('path', '/'); // dummy is needed by content proxy
-    if (hostname) {
-      url.searchParams.append('prefix', `https://${hostname}`);
+    if (prefix) {
+      url.searchParams.append('prefix', prefix);
     }
     const code = [
       'javascript:(function(){',
@@ -59,7 +63,21 @@
       '})();',
     ].join('');
     document.getElementById('bookmark').href = code;
+    if (title) document.getElementById('bookmark').setAttribute('title', title);
     document.getElementById('book').style.display = 'block';
   }
+
+  function init() {
+    var autorun=false;
+    var params = new URLSearchParams(window.location.search);
+    params.forEach((v,k) => {
+      document.getElementById(k).value=v;
+      autorun=true;
+      if (k=='title') document.getElementById('form').style.display = 'none';
+    })
+    if (autorun) run();
+  }
+
+  init();
 </script>
 

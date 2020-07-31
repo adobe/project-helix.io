@@ -62,8 +62,14 @@
       `window.open(u)`,
       '})();',
     ].join('');
-    document.getElementById('bookmark').href = code;
-    if (title) document.getElementById('bookmark').setAttribute('title', title);
+    var bm=document.getElementById('bookmark');
+    bm.href = code;
+    if (title) {
+      bm.setAttribute('title', title);
+      var img=bm.querySelector('img');
+      img.setAttribute('title', title);
+      img.setAttribute('alt', title);
+    }
     document.getElementById('book').style.display = 'block';
   }
 

@@ -61,7 +61,7 @@ const BOOKMARKLET = 'Helix Pages Preview Bookmarklet';
   const currentPath = loc.pathname;
 
   if (/.*\.sharepoint\.com/.test(currentHost)
-    || currentHost.startsWith('https://docs.google.com')) {
+    || currentHost.startsWith('https://docs.google.com/')) {
     // source document, open window with staging url
     const u = new URL('https://adobeioruntime.net/api/v1/web/helix/helix-services/content-proxy@v1');
     u.search = new URLSearchParams([

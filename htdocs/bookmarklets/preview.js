@@ -26,7 +26,7 @@ const BOOKMARKLET = 'Helix Pages Preview Bookmarklet';
 (() => {
   // config
   if (!window.hlxPreviewBookmarklet || typeof window.hlxPreviewBookmarklet !== 'object') {
-    window.alert(`${BOOKMARKLET} was unable find a valid configuration.`);
+    window.alert(`${BOOKMARKLET} was unable to find a valid configuration.`);
   }
   const c = window.hlxPreviewBookmarklet;
   const projectName = c.project || 'your Helix Pages project';
@@ -78,6 +78,7 @@ const BOOKMARKLET = 'Helix Pages Preview Bookmarklet';
         // staging, switch to production
         if (!c.outerHost) {
           window.alert(`${BOOKMARKLET} does not know the production host name for ${projectName}.`);
+          return;
         }
         window.location.href = `https://${c.outerHost}${currentPath.replace('/publish', '')}`;
         break;

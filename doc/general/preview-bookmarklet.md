@@ -4,11 +4,13 @@
 <label for="giturl">Repository URL:</label><br>
 <input id="giturl" placeholder="https://github.com/...." size="40"><br>
 <br>
-<label for="prefix">Fixed Hostname(optional): </label><br>
-<input id="prefix"><br>
+<label for="outerhost">Production Hostname (optional): </label><br>
+<input id="outerhost"><br>
+<br>
+<label for="project">Project Name (optional): </label><br>
+<input id="project"><br>
 <br>
 <input type="hidden" id="title"><br>
-<br>
 <button onclick="run()">Generate Bookmarklet</button>
 <br>
 <br>
@@ -29,44 +31,43 @@
 
 <script>
   function copy() {
-    var text = document.getElementById('bookmark').href;
+    const text = document.getElementById('bookmark').href;
     navigator.clipboard.writeText(text)
   }
 
   function run() {
-    var giturl = document.getElementById('giturl').value;
-    var prefix = document.getElementById('prefix').value;
-    var title = document.getElementById('title').value;
+    let giturl = document.getElementById('giturl').value;
+    const outerHost = document.getElementById('outerhost').value;
+    const title = document.getElementById('title').value;
+    const project = document.getElementById('project').value;
     if (!giturl) {
       alert('repository url is mandatory.');
       return;
     }
     giturl = new URL(giturl);
-    var segs = giturl.pathname.substring(1).split('/');
-    var owner = segs[0];
-    var repo = segs[1];
-    var ref = segs[3] || 'master';
+    const segs = giturl.pathname.substring(1).split('/');
+    const owner = segs[0];
+    const repo = segs[1];
+    const ref = segs[3] || 'master';
 
-    const url = new URL('https://adobeioruntime.net/api/v1/web/helix/helix-services/content-proxy@v1');
-    url.searchParams.append('owner', owner);
-    url.searchParams.append('repo', repo);
-    url.searchParams.append('ref', ref || 'master');
-    url.searchParams.append('path', '/'); // dummy is needed by content proxy
-    if (prefix) {
-      url.searchParams.append('prefix', prefix);
-    }
+    const innerHost = `${ref !== 'master' ? `${ref}--` : ''}${repo}--${owner}.hlx.page`;
+
     const code = [
-      'javascript:(function(){',
-      `var u=new URL('${url.href}');`,
-      `u.searchParams.append('lookup', window.location.href);`,
-      `window.open(u)`,
+      'javascript:(() => {',
+      'const script1 = document.createElement("script");',
+      'script1.innerText = "window.hlxPreviewBookmarklet = ',
+      `{project:'${project}',innerHost:'${innerHost}',outerHost:'${outerHost}'}";`,
+      'const script2 = document.createElement("script");',
+      `script2.src="//${window.location.host}/tools/preview/script.js";`,
+      'document.body.appendChild(script1);',
+      'document.body.appendChild(script2);',
       '})();',
     ].join('');
-    var bm=document.getElementById('bookmark');
+    const bm=document.getElementById('bookmark');
     bm.href = code;
     if (title) {
       bm.setAttribute('title', title);
-      var img=bm.querySelector('img');
+      const img=bm.querySelector('img');
       img.setAttribute('title', title);
       img.setAttribute('alt', title);
     }
@@ -74,16 +75,19 @@
   }
 
   function init() {
-    var autorun=false;
-    var params = new URLSearchParams(window.location.search);
+    let autorun=false;
+    const params = new URLSearchParams(window.location.search);
     params.forEach((v,k) => {
-      document.getElementById(k).value=v;
-      autorun=true;
-      if (k=='title') document.getElementById('form').style.display = 'none';
+      const field = document.getElementById(k);
+      if (!field) return;
+      field.value = v;
+      autorun = true;
+      if (k === 'title') {
+        document.getElementById('form').style.display = 'none';
+      }
     })
     if (autorun) run();
   }
 
   init();
 </script>
-

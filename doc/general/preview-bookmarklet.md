@@ -58,7 +58,7 @@
       'script1.innerText = "window.hlxPreviewBookmarklet = ',
       `{project:'${project}',innerHost:'${innerHost}',outerHost:'${outerHost}'}";`,
       'const script2 = document.createElement("script");',
-      `script2.src="//${window.location.host}/tools/preview/script.js";`,
+      `script2.src="//${window.location.host}/bookmarklets/preview.js";`,
       'document.body.appendChild(script1);',
       'document.body.appendChild(script2);',
       '})();',

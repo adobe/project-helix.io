@@ -22,8 +22,8 @@
  * @property {string} outerHost The production host name (optional)
  * @property {string} project The project name (optional)
  */
-const BOOKMARKLET = 'Helix Pages Preview Bookmarklet';
 (() => {
+  const BOOKMARKLET = 'Helix Pages Preview Bookmarklet';
   // config
   if (!window.hlxPreviewBookmarklet || typeof window.hlxPreviewBookmarklet !== 'object') {
     window.alert(`${BOOKMARKLET} was unable to find a valid configuration.`);

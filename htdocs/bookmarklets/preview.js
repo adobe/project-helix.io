@@ -34,6 +34,7 @@ const BOOKMARKLET = 'Helix Pages Preview Bookmarklet';
   let repo;
   let owner;
   if (c.innerHost) {
+    if (c.innerHost.startsWith('http')) c.innerHost = new URL(c.innerHost).host;
     const hostSegments = c.innerHost.split(c.innerHost.includes('--') ? '--' : '-');
     if (hostSegments.length >= 2) {
       ref = hostSegments.length === 3 ? hostSegments.shift() : null;
@@ -46,6 +47,7 @@ const BOOKMARKLET = 'Helix Pages Preview Bookmarklet';
     window.alert(`${BOOKMARKLET} is misconfigured for ${projectName}.`);
     return;
   }
+  if (c.outerHost && c.outerHost.startsWith('http')) c.outerHost = new URL(c.outerHost).host;
 
   let loc = window.location;
   const $test = window.document.getElementById('test_location');
@@ -89,7 +91,7 @@ const BOOKMARKLET = 'Helix Pages Preview Bookmarklet';
         break;
       }
       default: {
-        window.alert(`${BOOKMARKLET} allows you to preview pages on ${projectName}.\n\nTry it on a valid source document, or any page on:\nhttps://${c.innerHost}/\nhttps://${c.outerHost}/`);
+        window.alert(`${BOOKMARKLET} allows you to preview pages on ${projectName}.\n\nTry it on a valid source document, or any page on:\nhttps://${c.innerHost}${c.outerHost ? `/\nhttps://${c.outerHost}/` : ''}`);
       }
     }
   }

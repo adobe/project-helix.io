@@ -38,6 +38,7 @@
     "mocha-junit-reporter": "1.23.3",
     "nock": "11.7.2",
     "puppeteer": "^5.2.1",
-    "puppeteer-to-istanbul": "^1.4.0"
+    "puppeteer-to-istanbul": "^1.4.0",
+    "shelljs": "^0.8.4"
   }
 }

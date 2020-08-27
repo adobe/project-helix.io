@@ -54,13 +54,10 @@
 
     const code = [
       'javascript:(() => {',
-      'const script1 = document.createElement("script");',
-      'script1.innerText = "window.hlxPreviewBookmarklet = ',
-      `{project:'${project}',innerHost:'${innerHost}',outerHost:'${outerHost}'}";`,
-      'const script2 = document.createElement("script");',
-      `script2.src="//${window.location.host}/bookmarklets/preview.js";`,
-      'document.body.appendChild(script1);',
-      'document.body.appendChild(script2);',
+      'window.hlxPreviewBookmarklet = {project:'${project}',innerHost:'${innerHost}',outerHost:'${outerHost}'}";`,
+      'const script = document.createElement("script");',
+      `script.src="//${window.location.host}/bookmarklets/preview.js";`,
+      'document.body.appendChild(script);',
       '})();',
     ].join('');
     const bm=document.getElementById('bookmark');

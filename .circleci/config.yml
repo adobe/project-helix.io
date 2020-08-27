@@ -7,6 +7,9 @@ executors:
     environment:
       NPM_CONFIG_PREFIX: ~/.npm-global
 
+orbs:
+  puppeteer: threetreeslight/puppeteer@0.1.2
+
 jobs:
   build:
     executor: node10
@@ -30,6 +33,8 @@ jobs:
             paths:
                 - node_modules
             key: v2-dependencies-{{ checksum "package.json" }}
+
+        - puppeteer/install
 
         # run tests!
         - run: mkdir junit

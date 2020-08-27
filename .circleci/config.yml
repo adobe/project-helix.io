@@ -31,8 +31,6 @@ jobs:
                 - node_modules
             key: v2-dependencies-{{ checksum "package.json" }}
 
-        - puppeteer/install
-
         # run tests!
         - run: mkdir junit
         - run:

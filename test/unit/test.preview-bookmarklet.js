@@ -121,7 +121,7 @@ describe('Test preview bookmarklet', () => {
         } catch (e) {
           reject(e);
         }
-      }, 3000);
+      }, 5000);
     });
   }).timeout(10000);
 
@@ -132,7 +132,7 @@ describe('Test preview bookmarklet', () => {
     });
     await page.goto(`file://${__dirname}/../fixtures/preview-bookmarklet/staging-production.html`, { waitUntil: 'networkidle0' });
     assert.equal(switched, true, 'Production URL not opened');
-  }).timeout(5000);
+  }).timeout(10000);
 
   it('Switches from production to staging URL', async () => {
     let switched = false;

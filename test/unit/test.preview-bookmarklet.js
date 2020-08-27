@@ -27,6 +27,8 @@ describe('Test preview bookmarklet', () => {
       args: [
         '--disable-popup-blocking',
         '--disable-web-security',
+        '–no-sandbox',
+        '–disable-setuid-sandbox',
       ],
     });
     page = await browser.newPage();
@@ -119,9 +121,9 @@ describe('Test preview bookmarklet', () => {
         } catch (e) {
           reject(e);
         }
-      }, 2000);
+      }, 3000);
     });
-  }).timeout(5000);
+  }).timeout(10000);
 
   it('Switches from staging to production URL', async () => {
     let switched = false;

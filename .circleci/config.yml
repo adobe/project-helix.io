@@ -3,12 +3,9 @@ version: 2.1
 executors:
   node10:
     docker:
-      - image: circleci/node:10.18.1-buster
+      - image: circleci/node:latest-browsers
     environment:
       NPM_CONFIG_PREFIX: ~/.npm-global
-
-orbs:
-  puppeteer: threetreeslight/puppeteer@0.1.2
 
 jobs:
   build:

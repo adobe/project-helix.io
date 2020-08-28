@@ -54,7 +54,7 @@
 
     const code = [
       'javascript:(() => {',
-      `window.hlxPreviewBookmarklet = {project:'${project}',innerHost:'${innerHost}',outerHost:'${outerHost}'}";`,
+      `window.hlxPreviewBookmarklet = {project:'${project}',innerHost:'${innerHost}',outerHost:'${outerHost}'};`,
       'const script = document.createElement("script");',
       `script.src="//${window.location.host}/bookmarklets/preview.js";`,
       'document.body.appendChild(script);',

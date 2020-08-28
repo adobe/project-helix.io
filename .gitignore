@@ -1,6 +1,8 @@
 .hlx
-.cache/
-node_modules/
+.cache
+.lgtm
+.nyc_output
+node_modules
 pipeline.log
 logs
 env.inf

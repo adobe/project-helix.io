@@ -63,7 +63,7 @@
   const currentPath = loc.pathname;
 
   if (/.*\.sharepoint\.com/.test(currentHost)
-    || currentHost.startsWith('docs.google.com')) {
+    || currentHost === 'docs.google.com') {
     // source document, open window with staging url
     const u = new URL('https://adobeioruntime.net/api/v1/web/helix/helix-services/content-proxy@v1');
     u.search = new URLSearchParams([

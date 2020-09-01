@@ -107,7 +107,7 @@ describe('Test preview bookmarklet', () => {
     });
   });
 
-  it('Opens a new tab with staging lookup URL', async () => {
+  it('Opens a new tab with staging lookup URL from onedrive URL', async () => {
     let lookupUrl;
     browser.on('targetcreated', (target) => {
       lookupUrl = target.url();
@@ -117,6 +117,24 @@ describe('Test preview bookmarklet', () => {
       setTimeout(() => {
         try {
           assert.equal(lookupUrl, 'https://adobeioruntime.net/api/v1/web/helix/helix-services/content-proxy@v1?owner=adobe&repo=theblog&ref=master&path=%2F&lookup=https%3A%2F%2Fadobe.sharepoint.com%2F%3Aw%3A%2Fr%2Fsites%2FTheBlog%2F_layouts%2F15%2FDoc.aspx%3Fsourcedoc%3D%257BE8EC80CB-24C3-4B95-B082-C51FD8BC8760%257D%26file%3Dcafebabe.docx%26action%3Ddefault%26mobileredirect%3Dtrue', 'Staging lookup URL not opened');
+          resolve();
+        } catch (e) {
+          reject(e);
+        }
+      }, 5000);
+    });
+  }).timeout(10000);
+
+  it('Opens a new tab with staging lookup URL from gdrive URL', async () => {
+    let lookupUrl;
+    browser.on('targetcreated', (target) => {
+      lookupUrl = target.url();
+    });
+    await page.goto(`file://${__dirname}/../fixtures/preview-bookmarklet/gdrive-staging.html`, { waitUntil: 'networkidle0' });
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        try {
+          assert.equal(lookupUrl, 'https://adobeioruntime.net/api/v1/web/helix/helix-services/content-proxy@v1?owner=adobe&repo=pages&ref=master&path=%2F&lookup=https%3A%2F%2Fdocs.google.com%2Fdocument%2Fd%2F2E1PNphAhTZAZrDjevM0BX7CZr7KjomuBO6xE1TUo9NU%2Fedit', 'Staging lookup URL not opened');
           resolve();
         } catch (e) {
           reject(e);

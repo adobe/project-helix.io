@@ -322,10 +322,10 @@
     loadCSS(path) {
       let href = path;
       if (!href) {
-        const scripts = document.getElementsByTagName('script');
-        const lastScript = scripts[scripts.length - 1];
-        if (lastScript.src) {
-          href = lastScript.src.replace('.js', '.css');
+        const script = Array.from(document.querySelectorAll('script[src]'))
+          .filter((script) => script.src.endsWith('sidekick.js'))[0];
+        if (script) {
+          href = script.src.replace('.js', '.css');
         } else {
           const filePath = this.location.pathname;
           href = `${filePath.substring(filePath.lastIndexOf('/') + 1).split('.')[0]}.css`;

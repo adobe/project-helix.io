@@ -323,7 +323,7 @@
       let href = path;
       if (!href) {
         const script = Array.from(document.querySelectorAll('script[src]'))
-          .filter((script) => script.src.endsWith('sidekick.js'))[0];
+          .filter((include) => include.src.endsWith('sidekick.js'))[0];
         if (script) {
           href = script.src.replace('.js', '.css');
         } else {

@@ -1,0 +1,191 @@
+/*
+ * Copyright 2020 Adobe. All rights reserved.
+ * This file is licensed to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License. You may obtain a copy
+ * of the License at http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+ * OF ANY KIND, either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
+
+ :root {
+  --ui-bg: #dedede;
+  --ui-logo: url("../helix-icon.png");
+  --ui-color: #505050;
+  --ui-border: none;
+  --ui-border-radius: 10px;
+  --ui-font-family: arial, helvetica, sans-serif;
+  --ui-font-size: 0.875rem;
+  --ui-line-height: 1rem;
+  --ui-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 10px 20px 0 rgba(0, 0, 0, 0.3);
+  --button-color: #707070;
+  --button-bg: transparent;
+  --button-border: solid 1px var(--button-color);
+  --button-font-size: 0.75rem;
+  --button-font-weight: 500;
+  --button-padding: 5px 8px;
+  --button-hover-bg: #707070;
+  --button-hover-border: #707070;
+  --button-hover-color: white;
+  --button-border-radius: 6px;
+  --button-disabled-color: #909090;
+  --button-disabled-border: solid 1px var(--button-disabled-color);
+  --button-disabled-hover-bg: transparent;
+  --modal-overlay-bg: rgba(0,0,0, 0.5);
+  --modal-bg-0: #e60016;
+  --modal-bg-1: #e67316;
+  --modal-color: white;
+  --modal-font-size: 1.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ui-bg: #303030;
+    --ui-color: #dedede;
+    --button-color: #dedede;
+    --button-hover-bg: #909090;
+    --button-hover-border: #303030;
+    --button-hover-color: #303030;
+    --button-disabled-color: #707070;
+    --button-disabled-border: solid 1px var(--button-disabled-color);
+    --modal-overlay-bg: rgba(127, 127, 127, 0.8);
+  }
+}
+
+.hidden {
+  display: none !important;
+}
+
+.hlx-sidekick {
+  z-index: 1000;
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: var(--ui-bg);
+  background-image: var(--ui-logo);
+  background-repeat: no-repeat;
+  background-position: 10px 14px;
+  background-size: 22px;
+  color: var(--ui-color);
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 10px 10px 42px;
+  font-family: var(--ui-font-family);
+  font-size: var(--ui-font-size);
+  box-shadow: var(--ui-shadow);
+}
+
+.hlx-sidekick:empty::before {
+  content: "No actions here";
+  line-height: 2;
+}
+
+.hlx-sidekick button {
+  background-color: transparent;
+  border: var(--button-border);
+  border-radius: 6px;
+  color: var(--button-color);
+  font-size: var(--button-font-size);
+  line-height: var(--ui-line-height);
+  font-weight: var(--button-font-weight);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  padding: var(--button-padding);
+  cursor: pointer;
+  outline: none;
+  margin-left: 8px;
+}
+
+.hlx-sidekick div:first-of-type button {
+  margin-left: 0;
+}
+
+.hlx-sidekick button:hover,
+.hlx-sidekick button.pressed {
+  background-color: var(--button-hover-bg);
+  border-color: var(--button-hover-border);
+  color: var(--button-hover-color);
+}
+
+.hlx-sidekick button:disabled {
+  color: var(--button-disabled-color);
+  border: var(--button-disabled-border);
+}
+
+.hlx-sidekick button:disabled:hover {
+  background-color: var(--button-disabled-hover-bg);
+}
+
+.hlx-sidekick-overlay {
+  z-index: 999;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: var(--modal-overlay-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hlx-sidekick-overlay .modal {
+  font-family: var(--ui-font-family);
+  font-size: var(--modal-font-size);
+  border-radius: 32px;
+  padding: 12px 32px;
+  background-color: var(--ui-bg);
+  color: var(--ui-color);
+  box-shadow: var(--ui-shadow);
+}
+
+.hlx-sidekick-overlay .modal * {
+  font-size: var(--modal-font-size);
+}
+
+.hlx-sidekick-overlay .level-0 {
+  background-color: var(--modal-bg-0);
+  color: var(--modal-color);
+}
+
+.hlx-sidekick-overlay .level-1 {
+  background-color: var(--modal-bg-1);
+  color: var(--modal-color);
+}
+
+.hlx-sidekick-overlay .wait {
+  animation: heartbeat 2s ease-in-out infinite both;
+}
+
+.hlx-sidekick-overlay div.modal:empty::before {
+  content: "Please wait..."
+}
+
+@keyframes heartbeat {
+  from {
+            transform: scale(1);
+            transform-origin: center center;
+            animation-timing-function: ease-out;
+  }
+  10% {
+            transform: scale(0.91);
+            animation-timing-function: ease-in;
+  }
+  17% {
+            transform: scale(0.98);
+            animation-timing-function: ease-out;
+  }
+  33% {
+            transform: scale(0.87);
+            animation-timing-function: ease-in;
+  }
+  45% {
+            transform: scale(1);
+            animation-timing-function: ease-out;
+  }
+}

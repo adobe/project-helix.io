@@ -50,7 +50,7 @@
           class: 'loading',
         },
       });
-      window.setTimeout((sk) => sk.removeLoading(), 1000, this);
+      window.setTimeout((sk) => sk.removeLoading(), 10000, this);
     }
 
     /**

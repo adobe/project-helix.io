@@ -131,7 +131,8 @@ describe('Test sidekick bookmarklet', () => {
   }).timeout(10000);
 
   it('Removes plugin', async () => {
-    await page.goto(`${fixturesPrefix}/remove-plugin.html`, { waitUntil: 'load' });
+    await page.goto(`${fixturesPrefix}/config-plugin.html`, { waitUntil: 'load' });
+    await page.evaluate(() => window.hlxSidekick.remove('foo'));
     assert.strictEqual(
       await getSidekickText(page),
       '',
@@ -140,7 +141,16 @@ describe('Test sidekick bookmarklet', () => {
   }).timeout(10000);
 
   it('Adds HTML element', async () => {
-    await page.goto(`${fixturesPrefix}/add-elements.html`, { waitUntil: 'load' });
+    await page.goto(`${fixturesPrefix}/config-none.html`, { waitUntil: 'load' });
+    await page.evaluate(() => window.hlxSidekick.add({
+      id: 'foo',
+      elements: [
+        {
+          tag: 'span',
+          text: 'Lorem ipsum',
+        },
+      ],
+    }));
     assert.strictEqual(
       await getSidekickText(page),
       'Lorem ipsum',

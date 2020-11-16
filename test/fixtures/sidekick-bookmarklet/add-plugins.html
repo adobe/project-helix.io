@@ -1,0 +1,40 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <div class="foo"><button>Foo</button></div>
+    <script src="../../../htdocs/bookmarklets/sidekick.js"></script>
+    <script>
+      [
+        // HTMLElement
+        document.querySelector('.foo'),
+        // string
+        '<div class="bar"><button>Bar</button></div>',
+        // function
+        () => {
+          return {
+            id: 'zapf',
+            button: {
+              text: 'Zapf',
+            },
+          };
+        },
+        // object
+        {        
+          id: 'ding',
+          button: {
+            text: 'Ding',
+            action: () => {
+              window.hlxSidekick.add({
+                id: 'baz',
+                button: {
+                  text: 'Baz',
+                },
+              });
+            },
+          },
+        },
+      ].forEach((plugin) => window.hlxSidekick.add(plugin));
+    </script>
+  </body>
+</html>

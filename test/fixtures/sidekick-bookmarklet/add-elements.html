@@ -6,12 +6,13 @@
     <script>
       window.hlxSidekick.add({
         id: 'foo',
-        button: {
-          text: 'Foo',
-          action: () => {},
-        }
+        elements: [
+          {
+            tag: 'span',
+            text: 'Lorem ipsum',
+          }
+        ]
       });
-      window.hlxSidekick.remove('foo');
     </script>
   </body>
 </html>

@@ -30,12 +30,39 @@
           class: 'hlx-sidekick hidden',
         },
       });
+      this.addLoading();
       this.location = Sidekick.getLocation();
       this.loadCSS();
       if (this.config.plugins && Array.isArray(this.config.plugins)) {
         this.config.plugins.forEach((plugin) => this.add(plugin));
       }
       this._loadCustomPlugins();
+    }
+
+    /**
+     * Shows the loading indicator (for 10 seconds max).
+     * @private
+     */
+    addLoading() {
+      this._loading = Sidekick.appendTag(this.root, {
+        tag: 'div',
+        attrs: {
+          class: 'loading',
+        },
+      });
+      window.setTimeout((sk) => sk.removeLoading(), 1000, this);
+    }
+
+    /**
+     * Hides the loading indicator.
+     * @private
+     * @returns {object} The sidekcik
+     */
+    removeLoading() {
+      if (this._loading) {
+        this._loading.remove();
+        this._loading = null;
+      }
     }
 
     /**
@@ -177,6 +204,7 @@
      * @returns {object} The sidekick
      */
     add(plugin) {
+      this.removeLoading();
       if (plugin instanceof HTMLElement) {
         this.root.appendChild(plugin);
       } else if (typeof plugin === 'string') {

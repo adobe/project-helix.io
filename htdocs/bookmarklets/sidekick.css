@@ -38,6 +38,7 @@
   --modal-bg-1: #e67316;
   --modal-color: white;
   --modal-font-size: 1.5rem;
+  --wait-animation: heartbeat 2s ease-in-out infinite both;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -82,6 +83,10 @@
 .hlx-sidekick:empty::before {
   content: "No actions here";
   line-height: 2;
+}
+
+.hlx-sidekick .loading {
+  animation: var(--wait-animation);
 }
 
 .hlx-sidekick .loading::before {
@@ -163,7 +168,7 @@
 }
 
 .hlx-sidekick-overlay .wait {
-  animation: heartbeat 2s ease-in-out infinite both;
+  animation: var(--wait-animation);
 }
 
 .hlx-sidekick-overlay div.modal:empty::before {

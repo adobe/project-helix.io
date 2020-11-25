@@ -54,11 +54,11 @@ x-timer: S1542878721.015028,VS0,VE4
 vary: X-Debug, X-Strain
 strict-transport-security: max-age=31536000; includeSubDomains
 x-version: 100; src=100; cli=0.9.2-pre.4; rev=c25e2133d8bce6c5812a774fa272ad73a8d33458
-x-backend-url: /api/v1/web/helix/default/git-github-com-adobe-project-helix-io-git--master--html?owner=adobe&repo=project-helix.io&ref=master&path=/index.md&selector=&extension=html&branch=master&strain=default&params=(null)
-x-branch: master
+x-backend-url: /api/v1/web/helix/default/git-github-com-adobe-project-helix-io-git--main--html?owner=adobe&repo=project-helix.io&ref=main&path=/index.md&selector=&extension=html&branch=main&strain=default&params=(null)
+x-branch: main
 x-strain: default
 x-github-static-ref: @(null)
-x-action-root: /helix/default/git-github-com-adobe-project-helix-io-git--master--
+x-action-root: /helix/default/git-github-com-adobe-project-helix-io-git--main--
 x-url: /index.html
 x-root-path:
 set-cookie: X-Strain=default; Secure; HttpOnly; SameSite=Strict;
@@ -80,7 +80,7 @@ In order to override the strain selection that happens in the CDN, make a reques
 You can make requests directly to OpenWhisk to see the raw response. The `x-backend-url` header from above gives you an indication of the URL to use:
 
 ```bash
-$ curl "https://adobeioruntime.net/api/v1/web/helix/default/git-github-com-adobe-project-helix-io-git--master--html?owner=adobe&repo=project-helix.io&ref=master&path=/index.md&selector=&extension=html&branch=master&strain=default&params=(null)"
+$ curl "https://adobeioruntime.net/api/v1/web/helix/default/git-github-com-adobe-project-helix-io-git--main--html?owner=adobe&repo=project-helix.io&ref=main&path=/index.md&selector=&extension=html&branch=main&strain=default&params=(null)"
 ```
 
 ### Call OpenWhisk using the OpenWhisk Developer Tools
@@ -88,7 +88,7 @@ $ curl "https://adobeioruntime.net/api/v1/web/helix/default/git-github-com-adobe
 If you have the `wsk` OpenWhisk Command Line installed, you can also make requests to OpenWhisk using `wsk` to see the raw (JSON) response:
 
 ```bash
-$ wsk action invoke git-github-com-adobe-project-helix-io-git--master--html --blocking --result -p owner adobe -p repo project-helix.io -p ref master -p path index.md -p extension html -p branch master -p strain default
+$ wsk action invoke git-github-com-adobe-project-helix-io-git--main--html --blocking --result -p owner adobe -p repo project-helix.io -p ref main -p path index.md -p extension html -p branch main -p strain default
 ```
 
 ### Check OpenWhisk Logs
@@ -101,7 +101,7 @@ While it's not possible to debug actions deployed in the cloud we can emulate th
 
 #### 0. Pre-Requisites
 
-You'll need [Docker](https://www.docker.com/) installed on your local machine. You'll also need a properly set-up Helix development environment, see [Getting Started](https://github.com/adobe/helix-home/blob/master/getting-started.md) for instructions.
+You'll need [Docker](https://www.docker.com/) installed on your local machine. You'll also need a properly set-up Helix development environment, see [Getting Started](https://github.com/adobe/helix-home/blob/main/getting-started.md) for instructions.
 
 ##### Install utilities
 
@@ -160,7 +160,7 @@ Navigate to the source code of your action and bundled dependencies and set brea
 
 ```bash
 # encode action paramters as json
-echo '{ "value": { "owner": "adobe", "repo": "project-helix.io", "ref": "master", "path": "index.md", "extension": "html", "branch": "master", "strain": "default" } }' > params.json
+echo '{ "value": { "owner": "adobe", "repo": "project-helix.io", "ref": "main", "path": "index.md", "extension": "html", "branch": "main", "strain": "default" } }' > params.json
 # invoke the action
 http post localhost:8080/run < params.json
 # or, alternatively, using curl
@@ -203,13 +203,13 @@ Continue with [3. Deploy action locally](#3_deploy)
 # deploy
 wsk action create <action name> --kind nodejs:10 html.zip
 # invoke via wsk
-wsk action invoke <action name> -p owner adobe -p repo project-helix.io -p ref master -p path index.md -p extension html -p branch master -p strain default --result
+wsk action invoke <action name> -p owner adobe -p repo project-helix.io -p ref main -p path index.md -p extension html -p branch main -p strain default --result
 # invoke via curl
 wsk action get <action name> --url
-curl -v "<action url>?owner=adobe&repo=project-helix.io&ref=master&path=/index.md&selector=&extension=html&branch=master&strain=default&params=(null)"
+curl -v "<action url>?owner=adobe&repo=project-helix.io&ref=main&path=/index.md&selector=&extension=html&branch=main&strain=default&params=(null)"
 ```
 
 #### Some related links
 
-* [Adobe I/O Runtime Developer Guide](https://github.com/AdobeDocs/adobeio-runtime/tree/master#adobe-io-runtime-developer-guide)
+* [Adobe I/O Runtime Developer Guide](https://github.com/AdobeDocs/adobeio-runtime/tree/main#adobe-io-runtime-developer-guide)
 * [Debugging Node.js OpenWhisk Actions](https://medium.com/openwhisk/debugging-node-js-openwhisk-actions-3da3303e6741)

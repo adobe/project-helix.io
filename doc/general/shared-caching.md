@@ -30,7 +30,7 @@ Media assets get cached in the same way as dynamic content, albeit there is no w
 
 Static content, e.g. the images, CSS, fonts, and JavaScript files that create the client-side web application get cached in two ways, depending on the `code` reference in the `helix-config.yaml`.
 
-When the `code` reference points to a branch name like `master` or `develop`, a cache timeout of *5 minutes* will be applied. This means that your changes to the code base will be reflected across all visitors in a short time frame, but that there will be more invocations of the `helix--static` action that served static assets than there will be for the dynamic content actions.
+When the `code` reference points to a branch name like `main` or `develop`, a cache timeout of *5 minutes* will be applied. This means that your changes to the code base will be reflected across all visitors in a short time frame, but that there will be more invocations of the `helix--static` action that served static assets than there will be for the dynamic content actions.
 
 When the `code` reference points to a commit SHA like `8c3c2ed845d3c85ebaf51d4e95f03859a9291d90`, however, all static content will be treated as immutable, and a *one year* cache timeout will be applied. 
 
@@ -97,9 +97,9 @@ You can also lower the cache timeout, but as this negatively affects performance
 
 ### Use ESI to keep pages limited to one resource
 
-When you have to combine multiple resources in a single rendered page, it is a good idea to split the page into two: one master page that depends on one resource, e.g. a Markdown document and a second fragment page that depends on another resource, e.g. an RSS feed.
+When you have to combine multiple resources in a single rendered page, it is a good idea to split the page into two: one main page that depends on one resource, e.g. a Markdown document and a second fragment page that depends on another resource, e.g. an RSS feed.
 
-Then the master page should use ESI to include the fragment page, so that each element can be cached independently from each other and the lifetime of each page can be bound to the lifetime of the underlying resource, e.g. the master page gets flushed when the Markdown content changes, but the fragment page gets flushed when the RSS feed changes.
+Then the main page should use ESI to include the fragment page, so that each element can be cached independently from each other and the lifetime of each page can be bound to the lifetime of the underlying resource, e.g. the main page gets flushed when the Markdown content changes, but the fragment page gets flushed when the RSS feed changes.
 
 ### Tell Helix what resources your page is using
 

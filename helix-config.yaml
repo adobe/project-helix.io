@@ -11,7 +11,7 @@ version: 1
 
 definitions:
   defaults:
-    - &defaultRepo https://github.com/adobe/project-helix.io.git#master
+    - &defaultRepo https://github.com/adobe/project-helix.io.git#main
   strains:
     base:
       &basestrain
@@ -24,23 +24,23 @@ strains:
     <<: *basestrain
     condition:
       url.path: /client
-    content: https://github.com/adobe/helix-cli.git#master
-    package: helix-pages/c14f43cc8041cbcb248b40095920799b7773c63f
+    content: https://github.com/adobe/helix-cli.git#main
+    package: helix-pages/06307d78c1b25b9871803e56cdc1917835592835
 
   - name: pipeline
     <<: *basestrain
     condition:
       url.path: /pipeline
-    content: https://github.com/adobe/helix-pipeline.git#master
-    package: helix-pages/c14f43cc8041cbcb248b40095920799b7773c63f
+    content: https://github.com/adobe/helix-pipeline.git#main
+    package: helix-pages/06307d78c1b25b9871803e56cdc1917835592835
 
   - name: shared
     <<: *basestrain
     condition:
       url.path: /shared
-    content: https://github.com/adobe/helix-shared.git#master
-    package: helix-pages/c14f43cc8041cbcb248b40095920799b7773c63f
+    content: https://github.com/adobe/helix-shared.git#main
+    package: helix-pages/06307d78c1b25b9871803e56cdc1917835592835
 
   - name: default
     <<: *basestrain
-    package: helix-pages/c14f43cc8041cbcb248b40095920799b7773c63f
+    package: helix-pages/06307d78c1b25b9871803e56cdc1917835592835

@@ -24,7 +24,7 @@
   * [Troubleshooting & Debugging](/doc/general/troubleshooting.md)
   * [How to contribute](/doc/general/contributing.md)
 * API Reference
-  * [Helix Pipeline](https://github.com/adobe/helix-pipeline/tree/master/docs)
-  * [`helix-config.yaml`](https://github.com/adobe/helix-shared/tree/master/docs)
+  * [Helix Pipeline](https://github.com/adobe/helix-pipeline/tree/main/docs)
+  * [`helix-config.yaml`](https://github.com/adobe/helix-shared/tree/main/docs)
 * [Helix Repositories](https://github.com/search?p=1&q=topic%3Ahelix+org%3Aadobe&type=Repositories)
 * [Service Status](https://status.project-helix.io/)

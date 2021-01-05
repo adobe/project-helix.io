@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/adobe/project-helix.io#readme",
   "dependencies": {
+    "ajv": "7.0.3",
     "jsdom": "16.0.1",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.8"
